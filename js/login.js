@@ -23,4 +23,5 @@ async function login() {
   const data = await res.json();
   console.log(data);
   localStorage.setItem("token", data.accessToken);
+  //   location.href = "../public/feed/";
 }
