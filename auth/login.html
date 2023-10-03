@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Garden | Log in</title>
     <link rel="stylesheet" href="../dist/css/style.css" />
-    <script
+    <!-- <script
       src="../dist/popper.min.js"
       defer
-    ></script>
-    <script src="../dist/bootstrap.js" defer></script>
+    ></script> -->
+    <!-- <script src="../dist/bootstrap.js" defer></script> -->
     <script src="https://kit.fontawesome.com/17c7a6edf9.js" crossorigin="anonymous"></script>
-    <script src="./js/script.js" defer></script>
+    <script src="../js/login.js" defer></script>
+    <title>The Garden | Log in</title>
   </head>
   <body class="d-flex flex-column  min-vh-100 vh-100 bg-primary">
     <main class="h-auto " >
@@ -35,11 +35,11 @@
         </section>
         <section class="middle d-flex flex-md-row justify-content-md-around flex-column align-items-center">
           <div class="form-container w-50 d-flex align-items-center justify-content-center">
-              <form class="w-100 needs-validation" action="../public/feed/index.html" novalidate>
+              <form class="w-100 needs-validation" action="" novalidate>
                 <p class="font-monospace text-secondary">LOG IN</p>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-user"></i></span>
-                  <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                  <input type="text" class="form-control" id="input-email" aria-describedby="inputGroupPrepend" required>
                   <div class="invalid-feedback-custom custom-height">Invalid username</div>
                 </div>
                 <div class="w-100 art-vector-container">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="input-group has-validation position-relative">
                   <span class="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-key"></i></span>
-                  <input type="password" class="form-control" id="validationCustomPassword" aria-describedby="inputGroupPrepend" minlength="8" required>
+                  <input type="password" class="form-control" id="input-password" aria-describedby="inputGroupPrepend" minlength="8" required>
                   <div class="invalid-feedback-custom">Invalid Password</div>
                 </div>
                 <div class="button-container p-4 d-flex justify-content-center">
