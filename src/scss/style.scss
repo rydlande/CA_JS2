@@ -184,7 +184,6 @@ h3 {
     border: 2px solid white;
     padding-left: 0.5rem;
     border-radius: 5px;
-    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
     &::placeholder, :active, :focus {
         color: #888585;
     }
@@ -201,8 +200,17 @@ form {
 .invalid-feedback-custom {
     @extend .invalid-feedback;
     position: absolute;
+    z-index: 3;
     top: 2.5rem;
+    font-size: 0.8rem;
     
+}
+#response {
+    word-break:keep-all;
+    text-align: center;
+    font-size: 0.75rem;
+    width: 100vw;
+    left: -50%;
 }
 .custom-height {
     display: hidden !important;
@@ -210,14 +218,11 @@ form {
 }
 span {
     border-radius: 5px;
-    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
 .form-control {
     border-radius: 5px;
-    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
     &:focus {
-        box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
-        border-radius: 5px;
+        border: 1px solid $complimentary;
     }
 }
 
