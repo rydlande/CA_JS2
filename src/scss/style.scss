@@ -17,6 +17,7 @@
     border: none;
     &:hover {
     background-color: $complimentary;
+    cursor: pointer;
     }
     &-follow {
         color: $tertiary;
@@ -27,6 +28,7 @@
         box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
         &:hover {
             background-color: $white;
+            cursor: pointer;
         }
     }
     &-new-post {
@@ -56,6 +58,7 @@
         box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
         &:hover {
             background-color: $complimentary;
+            cursor: pointer;
         }
     }
     &-settings {
@@ -72,6 +75,7 @@
         box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
         &:hover {
             background-color: $complimentary;
+            cursor: pointer;
         }
     }
 }
@@ -79,12 +83,12 @@
     transform: matrix(1.1, 0, 0, 1.1, 0, 0);
     background-color: $white;
 }
+.btn{
+    cursor: pointer;
+}
 .submit-button {
     transform: matrix(1.1, 0, 0, 1.1, 0, 0);
     background-color: $complimentary;
-}
-a{
-    transition: 0.2s;;
 }
 .links:hover {
     transform: matrix(1.1, 0, 0, 1.1, 0, 0);
@@ -127,6 +131,9 @@ a{
 .navBg .nav-active {
    background-color: $navBg; 
 }
+.nav-link {
+    cursor: pointer;
+}
 .navbar-nav {
     width: 100vw;
     height: 100vh;
@@ -139,8 +146,6 @@ a{
 .navbar-nav li a{
     color: $complimentary;
 }
-
-
 #searchInput {
     display: none;
     transition: 0.3s;
@@ -245,14 +250,11 @@ span {
         border: 1px solid $complimentary;
     }
 }
-
 .profile-image-element {
     width: 160px;
     height: 160px;
     box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
-  
-
 .navbar-nav {
     width: 100vw;
     height: 100vh;
@@ -280,16 +282,19 @@ span {
         color: $tertiary;
         z-index: 0;
         gap: 2rem;
+        position: relative;
     }
     #desktop-logo {
+        position: absolute;
         display: flex;
         min-width: 100px;
+        left: 0;
+        padding: 0.3rem;
+        padding-top: 1rem;
     }
     .desktop-logo-elem {
-        position: absolute;
-        left: 0;
         display: flex;
-        width: 20px;
+        width: 200px
     }
     .logo-img {
         display: none;
@@ -324,5 +329,11 @@ span {
     .navbar {
         margin: 0;
         padding: 0;
+    }
+    .top {
+        min-height: 80px;
+    }
+    ul li {
+        margin-right: 2rem;
     }
   }

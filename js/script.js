@@ -18,7 +18,7 @@
       })
   })()
 
-  
+  document.querySelectorAll('img').setAtrribute('draggable', 'false')
 
 const searchBtn = document.getElementById('searchBtn');
 const searchInput = document.getElementById('searchInput')
