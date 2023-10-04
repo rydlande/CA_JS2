@@ -47,7 +47,6 @@ async function registerUser(){
             }else {
                 response.innerText = `${data.errors[0].message} \n`
             }
-
         })
         } else {
             response.style.color = 'green';
