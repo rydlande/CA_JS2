@@ -21,6 +21,7 @@
     ></script>
     <script src="../../dist/splide.js" defer></script>
     <script src="../script.js" defer></script>
+    <script src="../../js/validate.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100 overflow-x-hidden bg-primary">
     <main class="h-auto">
@@ -58,7 +59,17 @@
                         class="collapse position-absolute navbar-collapse "
                         id="navbarSupportedContent"
                       >
-                        <ul class="navbar-nav me-auto d-flex align-items-center justify-content-center mb-2 mb-lg-0">
+                        <ul class="navbar-nav d-flex align-items-center justify-content-center mb-2">
+                          <li class="nav-item d-none" id="desktop-logo">
+                            <a class="nav-link active" href="../feed/index.html"
+                              >
+                              <img
+                              class="p-0 m-0 desktop-logo-elem img-fluid"
+                              src="../../media/thegardenblackandwhite2.svg"
+                            />
+                              </a
+                            >
+                          </li>
                           <li class="nav-item">
                             <a class="nav-link active" href="../feed/index.html"
                               >FEED</a
