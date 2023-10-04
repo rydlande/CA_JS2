@@ -11892,7 +11892,6 @@ textarea.form-control-lg {
 }
 .btn-custom:hover, .btn-custom-secondary:hover {
   background-color: #F95738;
-
 }
 .btn-custom-follow {
   color: white;
@@ -12186,6 +12185,9 @@ span {
   }
   .desktop-logo-elem {
     width: 100%;
+  }
+  .circle-container img {
+    display: none;
   }
   .img-logo {
     z-index: 6;
