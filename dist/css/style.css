@@ -12176,11 +12176,9 @@ span {
   .circle-container {
     width: 20%;
   }
-  .circle-container img {
-    display: none;
-  }
   .img-logo {
     z-index: 6;
+    display: none;
   }
   .slider-container-desktop {
     display: flex;
