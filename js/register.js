@@ -50,7 +50,7 @@ async function registerUser() {
             response.style.color = 'green';
             response.innerText = `Welcome to the Garden ${data.name}. \n Redirecting to login page...`
             setTimeout(() => {
-                window.location.href = './login.html'
+                window.location.href = './public/feed/'
             }, 3000);
         }    }
 
