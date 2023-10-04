@@ -20,11 +20,10 @@
       crossorigin="anonymous"
     ></script>
     <script src="../../dist/splide.js" defer></script>
-    <script src="../script.js" defer></script>
+    <script src="../../js/script.js" defer></script>
     <script src="../../js/validate.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100 overflow-x-hidden bg-primary">
-    <main class="h-auto">
       <section class="top">
         <div class="container-fluid">
           <div class="row">
@@ -97,27 +96,31 @@
           </div>
         </div>
       </section>
+    <main class="h-auto">
       <section class="middle d-flex flex-column align-items-start mt-5">
-        <div class="button-section m-md-3 d-flex flex-column flex-md-row align-items-start mb-3 w-100 justify-content-between">
-            <div class="button-section-top p-md-2 p-4 py-3 py-md-0">
-              <button class="btn btn-custom-new-post d-flex align-items-center justify-content-center">
-                NEW POST
-                <img class="" draggable="false" src="../../media/+icon.svg">
-              </button>
-              <button class="btn btn-custom-discover d-flex align-items-center justify-content-center">
-                DISCOVER
-                <img class="" draggable="false" src="../../media/Unionpeacesign.svg">
-              </button>
-            </div>
-            <div class="button-section-bottom flex-wrap px-md-0 gap-2 p-4 py-md-0 py-1 d-flex">
-              <button class="btn btn-custom-settings d-flex align-items-center justify-content-center" id="searchBtn">
-                <input type="text" class="input-group-custom" id="searchInput">
-                <img class="" draggable="false" src="../../media/Group 2search.svg">
-              </button>
-            </div>
-            <button class="btn btn-custom-settings d-flex align-items-center justify-content-center">
-              <img class="" draggable="false" src="../../media/Unionfilter.svg">
+        <div class="w-100">
+          <div class="top-box d-flex gap-1 align-items-center justify-content-center">
+            <textarea id="cta-textarea" placeholder="How are you feeling today?"></textarea>
+            <button class="btn btn-custom-new-post d-flex align-items-center justify-content-center">
+              NEW POST
+              <img class="" draggable="false" src="../../media/+icon.svg">
             </button>
+          </div>
+        </div>
+        <div class="button-section m-md-3 mb-3 w-100">
+            <div class="button-section-top  p-md-2 p-4 py-3 py-md-0">
+            </div>
+            <div class="button-section-middle d-flex">
+              <form class="d-flex" action="" id="search-form">
+                <input type="text" class="form-control search-input" placeholder="Search" id="search-input">
+                <button class="input-group-text" id="search-input-button"><i class="bi bi-search"></i></button>
+              </form>
+            </div>
+            <div class="button-section-bottom">
+              <button class="btn btn-custom d-flex align-items-center justify-content-center">
+                <i class="bi bi-funnel"></i>
+              </button>
+            </div>
         </div>
       </section>
     </main>
