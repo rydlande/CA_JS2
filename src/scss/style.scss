@@ -16,7 +16,7 @@
     height: 35px;
     border: none;
     &:hover {
-    background-color: $white;
+    background-color: $complimentary;
     }
     &-follow {
         color: $tertiary;
@@ -54,6 +54,9 @@
         gap: 0.6rem;
         font-weight: 600;;
         box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
+        &:hover {
+            background-color: $complimentary;
+        }
     }
     &-settings {
         background-color: $tertiary;
@@ -67,6 +70,9 @@
         gap: 0.6rem;
         font-weight: 600;;
         box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
+        &:hover {
+            background-color: $complimentary;
+        }
     }
 }
 .btn:hover {
@@ -80,9 +86,8 @@
 a{
     transition: 0.2s;;
 }
-a:hover {
+.links:hover {
     transform: matrix(1.1, 0, 0, 1.1, 0, 0);
-    
 }
 
 .font-normal {
@@ -256,6 +261,10 @@ span {
 }
   
 @media only screen and (min-width: 992px) {
+    .navbar-container {
+        top: 0;
+        left: 0;
+    }
     .navbar-nav {
         font-weight: 600;
         font-size: 1rem;
@@ -274,8 +283,11 @@ span {
         display: flex;
         width: 100%;
     }
-    .circle-container {
-       width: 20%;
+    .desktop-logo-elem {
+        width: 100%;
+    }
+    .circle-container img {
+        display: none;
     }
     .img-logo {
         z-index: 6;

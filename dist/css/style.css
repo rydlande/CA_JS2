@@ -11891,7 +11891,7 @@ textarea.form-control-lg {
   border: none;
 }
 .btn-custom:hover, .btn-custom-secondary:hover {
-  background-color: #fff;
+  background-color: #F95738;
 }
 .btn-custom-follow {
   color: white;
@@ -11930,6 +11930,9 @@ textarea.form-control-lg {
   font-weight: 600;
   box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
+.btn-custom-discover:hover {
+  background-color: #F95738;
+}
 .btn-custom-settings {
   background-color: white;
   color: #0D3B66;
@@ -11942,6 +11945,9 @@ textarea.form-control-lg {
   gap: 0.6rem;
   font-weight: 600;
   box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
+}
+.btn-custom-settings:hover {
+  background-color: #F95738;
 }
 
 .btn:hover {
@@ -11958,7 +11964,7 @@ a {
   transition: 0.2s;
 }
 
-a:hover {
+.links:hover {
   transform: matrix(1.1, 0, 0, 1.1, 0, 0);
 }
 
@@ -12155,6 +12161,10 @@ span {
 }
 
 @media only screen and (min-width: 992px) {
+  .navbar-container {
+    top: 0;
+    left: 0;
+  }
   .navbar-nav {
     font-weight: 600;
     font-size: 1rem;
@@ -12173,8 +12183,11 @@ span {
     display: flex;
     width: 100%;
   }
-  .circle-container {
-    width: 20%;
+  .desktop-logo-elem {
+    width: 100%;
+  }
+  .circle-container img {
+    display: none;
   }
   .img-logo {
     z-index: 6;
