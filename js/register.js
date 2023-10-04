@@ -1,5 +1,5 @@
 const button = document.querySelector('#button-register')
-button.addEventListener('click', (e)=> {
+button.addEventListener('click', (e)=> {
 e.preventDefault();
 registerUser()
 })

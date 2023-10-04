@@ -11883,7 +11883,7 @@ textarea.form-control-lg {
 
 .btn-custom, .btn-custom-secondary {
   color: white;
-  background-color: #F95738;
+  background-color: #0D3B66;
   transition: 0.3s;
   box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
   width: 60px;
@@ -11945,8 +11945,21 @@ textarea.form-control-lg {
 }
 
 .btn:hover {
-  border: 2px solid #F95738;
-  background-color: white;
+  transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+  background-color: #fff;
+}
+
+.submit-button {
+  transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+  background-color: #F95738;
+}
+
+a {
+  transition: 0.2s;
+}
+
+a:hover {
+  transform: matrix(1.1, 0, 0, 1.1, 0, 0);
 }
 
 .font-normal {
@@ -11961,10 +11974,6 @@ textarea.form-control-lg {
 .icon {
   width: 30px;
   height: 30px;
-}
-
-.slider-image-element {
-  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
 .count {
@@ -12065,6 +12074,11 @@ h3, .h3 {
   box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
+.btn-custom-secondary:hover {
+  border: 2px solid #fafafa;
+  background-color: white;
+}
+
 .credit-text {
   font-size: clamp(12px, 2rem, 14px);
 }
@@ -12105,8 +12119,7 @@ form {
   word-break: keep-all;
   text-align: center;
   font-size: 0.75rem;
-  width: 100vw;
-  left: -50%;
+  width: 100%;
 }
 
 .custom-height {
@@ -12141,26 +12154,30 @@ span {
   z-index: 3;
 }
 
-.slider-image-container:hover {
-  filter: opacity(0.9);
-}
-
 @media only screen and (min-width: 992px) {
   .navbar-nav {
     font-weight: 600;
     font-size: 1rem;
-    width: 100vw;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     position: sticky;
     color: white;
     z-index: 0;
-    margin-top: -1rem;
     gap: 2rem;
-    margin-left: 5rem;
+  }
+  #desktop-logo {
+    display: flex;
+    min-width: 200px;
+  }
+  .desktop-logo-elem {
+    display: flex;
+    width: 100%;
   }
   .circle-container {
-    z-index: 5;
     width: 20%;
+  }
+  .circle-container img {
+    display: none;
   }
   .img-logo {
     z-index: 6;
