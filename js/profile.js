@@ -1,6 +1,7 @@
 /* if localStorage accesstoken validate
  */
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
+let data = [];
 
 async function getToken() {
   const token = localStorage.getItem("token");
@@ -15,5 +16,6 @@ async function getToken() {
   console.log(res);
   const data = await res.json();
   console.log(data);
+  getCount();
 }
 getToken();
