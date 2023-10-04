@@ -12186,9 +12186,6 @@ span {
   .desktop-logo-elem {
     width: 100%;
   }
-  .circle-container img {
-    display: none;
-  }
   .img-logo {
     z-index: 6;
     display: none;
