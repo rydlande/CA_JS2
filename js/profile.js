@@ -25,15 +25,15 @@ async function getCount(data) {
   console.log(usersCount);
   containerCount.innerHTML = `
     <div class="col w-100 gap-4 d-flex align-items-center justify-content-center flex-column">
-      <img class="follower-icon icon" src="../../media/Unionfollowers-icon.svg">
+      <i class="bi bi-people-fill fa-lg"></i>
       <p class="text-nobreak count" id="postsCount">${followers}</p>
     </div>
     <div class="col w-100 gap-4 d-flex align-items-center justify-content-center flex-column">
-      <img class="likes-icon icon" src="../../media/Unionlikes-icon.svg">
+      <i class="bi bi-person-heart fa-lg"></i>
       <p class="text-nobreak count">${following}</p>
     </div>
     <div class="col w-100 gap-4 d-flex align-items-center justify-content-center flex-column">
-      <i class="bi bi-image"></i>
+    <i class="bi bi-card-text fa-lg"></i>
       <p class="text-nobreak count">${posts}</p>
     </div>
   `;
