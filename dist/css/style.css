@@ -11920,8 +11920,11 @@ textarea.form-control-lg {
   font-weight: 600;
   box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
+.btn-custom-new-post img {
+  transform: rotate(180deg);
+}
 .btn-custom-new-post:hover img {
-  transform: rotate3d(0, 1, 0, 180deg);
+  transform: rotate(0, 1, 0, 180deg);
 }
 .btn-custom-discover {
   background-color: #ffffff;
@@ -11963,7 +11966,7 @@ img {
 }
 
 .btn:hover {
-  background-color: var(--bs-border-color);
+  background-color: white;
 }
 
 .btn {
@@ -12197,18 +12200,19 @@ span {
 
 .button-section-middle {
   grid-row: 1;
-  grid-column: 4/6;
+  grid-column: 7/8;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .button-section-bottom {
   grid-row: 1;
-  grid-column: 7/9;
+  grid-column: 8/9;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 1rem;
 }
 
 .button-section-bottom button {

@@ -8,9 +8,7 @@
             Authorization: `Bearer ${token}`,
           },
     })
-    console.log(res)
     const data = await res.json()
-    console.log(data)
     if (data.statusCode === 500) {
         window.location.href = '../../auth/login.html'
     }
