@@ -25,10 +25,7 @@ async function login() {
   localStorage.setItem("token", data.accessToken);
   localStorage.setItem("name", data.name);
   console.log(data);
-  if (data.status === "Bad Request") {
-    response.style.color = "red";
-    response.innerText = `Email or password is incorrect`;
-  } else if (data.status === "Unauthorized") {
+  if (data.errors) {
     response.style.color = "red";
     response.innerText = `Email or password is incorrect`;
   } else {

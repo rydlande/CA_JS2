@@ -9,7 +9,10 @@
     <script src="../../dist/popper.min.js" defer></script>
     <script src="../../dist/bootstrap.js" defer></script>
     <script src="../../dist/splide.js" defer></script> -->
-    <script src="https://kit.fontawesome.com/17c7a6edf9.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/17c7a6edf9.js"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="../../js/profile.js" defer></script>
     <!-- <script src="../../js/validate.js" defer></script> -->
@@ -18,20 +21,21 @@
 
   <body class="d-flex flex-column min-vh-100 overflow-x-hidden bg-primary">
     <main class="h-auto">
-
       <!-- HEADER -->
       <section class="top">
         <div class="container-fluid">
-
           <div class="row">
-            <a href="../feed/index.html" class="circle-container p-0 m-0 d-flex align-items-start z-1 justify-content-start">
+            <a
+              href="../feed/index.html"
+              class="circle-container p-0 m-0 d-flex align-items-start z-1 justify-content-start"
+            >
               <img
                 class="p-0 m-0 img-fluid"
                 id="logo-img"
                 src="../../media/Group 11logo-white-top-left.svg"
               />
             </a>
-            
+
             <div class="nav-container position-absolute">
               <nav class="navbar navbar-expand-lg bg-primary">
                 <button
@@ -41,18 +45,25 @@
                   data-bs-target="#navbarSupportedContent"
                   aria-controls="navbarSupportedContent"
                   aria-expanded="false"
-                  aria-label="Toggle navigation">
-
-                  <div class="hamburger d-flex justify-content-end align-items-end">
+                  aria-label="Toggle navigation"
+                >
+                  <div
+                    class="hamburger d-flex justify-content-end align-items-end"
+                  >
                     <span class="ham-bar bar-top"> </span>
                     <span class="ham-bar bar-mid"> </span>
                     <span class="ham-bar bar-bottom"> </span>
                   </div>
                 </button>
 
-                <div class="navbar-container ">
-                  <div class="collapse position-absolute navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto d-flex align-items-center justify-content-center mb-2 mb-lg-0">
+                <div class="navbar-container">
+                  <div
+                    class="collapse position-absolute navbar-collapse"
+                    id="navbarSupportedContent"
+                  >
+                    <ul
+                      class="navbar-nav me-auto d-flex align-items-center justify-content-center mb-2 mb-lg-0"
+                    >
                       <li class="nav-item">
                         <a class="nav-link" href="../feed/index.html">FEED</a>
                       </li>
@@ -60,7 +71,9 @@
                         <a class="nav-link" href="#">SEARCH</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">PROFILE</a>
+                        <a class="nav-link active" aria-current="page" href="#"
+                          >PROFILE</a
+                        >
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">SETTINGS</a>
@@ -79,45 +92,55 @@
 
       <!-- PROFILE -->
       <section class="middle d-flex flex-column align-items-center">
-        <div class="profile-middle-container w-50 d-flex flex-column align-items-center justify-content-center">
-
+        <div
+          class="profile-middle-container w-50 d-flex flex-column align-items-center justify-content-center"
+        >
           <!-- PROFILE-PIC -->
-          <div class="profile-image-container position-relative d-flex align-items-end justify-content-end">
-            <img class=" profile-image-element rounded-circle" src="../../media/ian-dooley-hpTH5b6mo2s-unsplash.jpg">
-            <button class="btn btn-custom-follow rounded-circle d-flex align-items-center justify-content-center position-absolute">
+          <div
+            class="profile-image-container position-relative d-flex align-items-end justify-content-end"
+            id="containerAvatar"
+          >
+            <!-- <img class=" profile-image-element rounded-circle" src="../../media/ian-dooley-hpTH5b6mo2s-unsplash.jpg"> -->
+            <!-- <button class="btn btn-custom-follow rounded-circle d-flex align-items-center justify-content-center position-absolute">
               <img class="" src="../../media//+icon.svg">
-            </button>
+            </button> -->
           </div>
 
           <!-- USERNAME -->
-          <div class="profile-nametag d-flex align-items-center col-md-4 justify-content-center min-vw-100">
-            <h1 class="p-4 text-secondary text-nowrap font-monospace">@james-taylor  <small class="text-muted font-normal identifier">(You)</small></h2>
-          </div>
+          <div
+            class="profile-nametag d-flex align-items-center col-md-4 justify-content-center min-vw-100"
+            id="containerName"
+          ></div>
 
-          <!-- FOLLOWERS/FOLLOWING -->
-          <div class="icon-container w-100 row" id="containerCount">
-          </div>
-
-          <!-- BIOGRAPHY -->
-          <div class="profile-biography min-vw-100 py-4 px-4">
-            <h6 class="font-monospace text-secondary w-100 d-flex justify-content-start align-items-start">BIOGRAPHY</h6>
-            <p class="py-2">Lorem ipsum, dorelas opsen ipsum. Ipsum franpt Lorem ipsum. Fra Norge, 23 år. </p>
-          </div>
+          <!-- COUNT (users posts, following, followers) -->
+          <div class="icon-container w-100 row" id="containerCount"></div>
 
           <!-- POSTS -->
           <div class="profile-posts min-vw-100 py-4 px-4">
-            <h6 class="font-monospace text-secondary w-100 d-flex justify-content-start align-items-start">MY POSTS</h6>
+            <h6
+              class="font-monospace text-secondary w-100 d-flex justify-content-center align-items-center"
+            >
+              MY POSTS
+            </h6>
+            <div
+              class="w-100 d-flex justify-content-center align-items-center"
+              id="containerPosts"
+            ></div>
           </div>
         </div>
       </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bottom d-flex align-items-end justify-content-start h-100 mb-0">
+    <footer
+      class="bottom d-flex align-items-end justify-content-start h-100 mb-0"
+    >
       <div class="footer-container container-fluid w-100">
         <div class="container-bottom row">
           <div class="col p-0 m-0 transparent"></div>
-          <div class="col d-flex align-items-end justify-content-center transparent">
+          <div
+            class="col d-flex align-items-end justify-content-center transparent"
+          >
             <img
               class="p-0 m-0 img-fluid p-1"
               src="../../media//THE GARDEN INC.svg"
