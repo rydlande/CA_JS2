@@ -1,4 +1,4 @@
-async function validateUser() {
+export async function validateUser() {
   const url = "https://api.noroff.dev/api/v1/social/posts";
   let token = localStorage.getItem("token");
   const res = await fetch(url, {
