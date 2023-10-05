@@ -322,6 +322,32 @@ width: 30%;
 resize: none;
 padding:0.2rem;
 }
+.spinner {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    animation: spin 1s linear infinite;
+}
+.dot1, .dot2 {
+ width: 10px;
+ height: 10px;
+ border-radius: 100%;
+ background-color: $complimentary;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 @media only screen and (min-width: 992px) {
     .navbar-container {
