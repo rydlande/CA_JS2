@@ -340,6 +340,10 @@ padding:0.2rem;
  background-color: $complimentary;
 }
 
+.icon-complimentary {
+    color: $complimentary;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -421,4 +425,12 @@ padding:0.2rem;
     ul li {
         margin-right: 2rem;
     }
+  }
+
+  /* POSTS */
+  .section-posts {
+
+  }
+  .root-posts {
+
   }

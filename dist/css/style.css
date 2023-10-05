@@ -12257,6 +12257,10 @@ span {
   background-color: #F95738;
 }
 
+.icon-complimentary {
+  color: #F95738;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -12337,5 +12341,6 @@ span {
     margin-right: 2rem;
   }
 }
+/* POSTS */
 
 /*# sourceMappingURL=style.css.map */
