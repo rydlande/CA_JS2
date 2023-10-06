@@ -4,15 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feed | The Garden</title>
+    <title>Post | The Garden</title>
     <link rel="stylesheet" href="../../dist/css/style.css" />
     <script
       src="https://kit.fontawesome.com/17c7a6edf9.js"
       crossorigin="anonymous"
     ></script>
-    <script src="../../js/script.js" defer></script>
     <script src="../../js/validate.js" type="module" defer></script>
-    <script src="../../js/card.js" defer></script>
+    <script src="../../js/singlePost.js" type="module" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100 overflow-x-hidden bg-primary">
       <section class="top">
@@ -82,34 +81,8 @@
         </div>
       </section>
     <main class="h-auto min-vh-100">
-      <div class="button-section m-md-3 mb-3 mb-lg-5 w-100">
-        <div class="button-section-top  p-md-2 p-4 py-3 py-md-0">
-        </div>
-        <div class="button-section-middle d-flex">
-          <form class="d-flex" action="" id="search-form">
-            <input type="text" class="form-control search-input" placeholder="Search" id="search-input">
-            <button class="input-group-text" id="search-input-button"><i class="bi bi-search"></i></button>
-          </form>
-        </div>
-        <div class="button-section-bottom">
-          <button class="btn btn-custom d-flex align-items-center justify-content-center">
-            <i class="bi bi-funnel"></i>
-          </button>
-        </div>
-    </div>
-      <section class="middle d-flex flex-column align-items-start mt-3">
-        <div class="w-100">
-          <div class="top-box d-flex gap-1 align-items-center justify-content-center">
-            <textarea id="cta-textarea" placeholder="How are you feeling today?"></textarea>
-            <button class="btn btn-custom-new-post d-flex align-items-center justify-content-center">
-              NEW POST
-            <img class="" draggable="false" src="../../media/+icon.svg">
-            </button>
-          </div>
-        </div>
-      </section>
       <section class="section-posts mt-5">
-        <div class="px-3" id="root-posts">
+        <div class="px-3" id="root-single-post">
         </div>
       </section>
     </main>
