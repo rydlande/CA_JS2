@@ -43,6 +43,7 @@
         gap: 0.6rem;
         font-weight: 600;;
         box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
+        z-index: 3;
         img {
             transform: rotate(180deg);
         }
@@ -383,7 +384,7 @@ padding:0.2rem;
     }
     .desktop-logo-elem {
         display: flex;
-        width: 200px
+        width: 200px;
     }
     .logo-img {
         display: none;
@@ -441,17 +442,21 @@ flex-direction: column;
 align-items: center;
 gap: 2rem;
   }
-  
-  .card {
+.card {
     width: 100%;
-    min-height: 100px;
+    padding: 1rem;
   }
 .card img {
     max-width: 100%;
     max-height: 400px;
     object-fit: cover;
-    
-
+}
+.cardContent {
+    padding-block: 1rem;
+    width: 100%;
+    min-height: 100px;
+    color: black;
+    text-decoration: none;
 }
 .imageContainer {
     filter:brightness(0.98);
@@ -461,4 +466,38 @@ overflow: hidden;
 display: flex;
 align-items: center;
 justify-content: center;
+}
+.creator {
+width: 100%;
+display: flex;
+gap: 1rem;
+align-items: center;
+justify-content: flex-start;
+color: black;
+text-decoration: none;
+}
+.creator:hover {
+    color: $complimentary;
+}
+.creatorImageContainer {
+    background-color: $complimentary;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+.creatorImage {
+    border-radius: 100%;
+}
+.comments, .reactions {
+    color: $complimentary;
+}
+.comments {
+    margin-right: auto;
+}
+.reactions {
+    margin-left: auto;
+}
+.cardBottom {
+    display: flex;
+    width: 100%;
 }

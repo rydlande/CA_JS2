@@ -3,12 +3,12 @@ const params = new URLSearchParams(queryString);
 console.log(params)
 const id = params.get("id");
 console.log(id)
-import renderCard from './modules/renderCard.js';
+import renderCard from './modules/renderCard.mjs';
 
 async function renderPost() {
     const root = document.getElementById('root-single-post');
 const token = localStorage.getItem("token");
-    const res = await fetch(`https://api.noroff.dev/api/v1/social/posts/`+ id,{
+    const res = await fetch(`https://api.noroff.dev/api/v1/social/posts/`+ id +"?_author=true&_reactions=true&_comments=true",{
         method: "GET",
         headers: {
             'Content-Type': 'application/json',

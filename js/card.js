@@ -1,7 +1,7 @@
 const root = document.getElementById('root-posts');
-const url = "https://api.noroff.dev/api/v1/social/posts";
+const url = "https://api.noroff.dev/api/v1/social/posts?_author=true&_reactions=true&_comments=true";
 
-import renderCard from './modules/renderCard.js';
+import renderCard from './modules/renderCard.mjs';
 
 async function getPosts(){
     let token = localStorage.getItem('token');
@@ -22,3 +22,4 @@ async function getPosts(){
 addEventListener('DOMContentLoaded', () => {
     getPosts()
 })
+
