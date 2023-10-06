@@ -15,6 +15,7 @@ async function getToken() {
   getProfile(data);
   getCount(data);
   getPosts(name, token);
+  newPost(token);
 }
 getToken();
 
@@ -106,4 +107,22 @@ async function getPosts(name, token) {
       </div>
     </div>`;
   }
+}
+
+const postURL = "https://api.noroff.dev/api/v1/social/posts/";
+const 
+
+async function newPost(token) {
+  const inputPost = {};
+  const res = await fetch(postURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(inputPost),
+  });
+  console.log(res);
+  const postData = await res.json();
+  console.log(postData);
 }
