@@ -12038,7 +12038,7 @@ img {
   position: fixed;
   left: 0;
   background-color: #0D3B66;
-  z-index: 3;
+  z-index: 4;
 }
 
 .navbar-nav li a {
@@ -12180,7 +12180,7 @@ span {
   position: fixed;
   left: 0;
   background-color: #0D3B66;
-  z-index: 3;
+  z-index: 4;
 }
 
 #desktop-logo {
@@ -12414,6 +12414,11 @@ span {
 
 .comments, .reactions {
   color: #F95738;
+  text-decoration: none;
+}
+
+.comments:hover, .reactions:hover {
+  color: #0D3B66;
 }
 
 .comments {
@@ -12427,6 +12432,10 @@ span {
 .cardBottom {
   display: flex;
   width: 100%;
+}
+
+.modalContainer {
+  position: absolute;
 }
 
 /*# sourceMappingURL=style.css.map */
