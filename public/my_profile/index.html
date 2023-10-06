@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../dist/css/style.css" />
-    <!-- <link rel="stylesheet" href="../../dist/css/splide.min.css">
-    <script src="../../dist/popper.min.js" defer></script>
-    <script src="../../dist/bootstrap.js" defer></script>
-    <script src="../../dist/splide.js" defer></script> -->
+    <!-- <link rel="stylesheet" href="../../dist/css/splide.min.css"> -->
+    <!-- <script src="../../dist/popper.min.js" type="module" defer></script> -->
+    <!-- <script src="../../dist/bootstrap.js" type="module" defer></script> -->
+    <!-- <script src="../../dist/splide.js" type="module" defer></script> -->
+    <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/17c7a6edf9.js"
       crossorigin="anonymous"
@@ -122,10 +124,101 @@
             >
               MY POSTS
             </h6>
+
+            <!-- BUTTON - NEW POST -->
+            <button
+              id="buttonNewPost"
+              type="button"
+              class="btn btn-custom-new-post d-flex align-items-center justify-content-center"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
+              NEW POST
+              <img class="" draggable="false" src="../../media/+icon.svg" />
+            </button>
+
+            <!-- NEW POST - MODAL -->
+            <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                      New post
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+
+                  <!-- MODAL BODY -->
+                  <div class="modal-body">
+                    <!-- TITLE -->
+                    <div id="modalTitle">
+                      <label for="inputTitle">Title:</label>
+                      <input type="text" id="inputTitle" class="form-control" />
+                    </div>
+                    <!-- BODY -->
+                    <div id="modalBody">
+                      <label for="inputBody">Body:</label>
+                      <textarea
+                        name=""
+                        id="inputBody"
+                        class="form-control"
+                        cols="30"
+                        rows="5"
+                      ></textarea>
+                    </div>
+                    <!-- MEIDA -->
+                    <div id="modalMedia">
+                      <label for="inputMedia">Image (url):</label>
+                      <input type="text" id="inputMedia" class="form-control" />
+                    </div>
+                    <!-- TAGS -->
+                    <div id="modalTags">
+                      <label for="inputTags"
+                        >Make your post easier to find for others, you can use
+                        more than one tag by adding space between the
+                        tags</label
+                      >
+                      <input type="text" id="inputTags" class="form-control" />
+                    </div>
+                  </div>
+                  <!-- SUBMIT -->
+                  <div class="modal-footer">
+                    <button
+                      type="sumbit"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Post
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div
               class="w-100 d-flex justify-content-center align-items-center"
               id="containerPosts"
             ></div>
+            <button
+              id="buttonMorePosts"
+              class="btn btn-custom-secondary color"
+              style="color: black; width: 7rem"
+            >
+              Show more
+            </button>
           </div>
         </div>
       </section>
