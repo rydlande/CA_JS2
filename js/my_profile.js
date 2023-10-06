@@ -129,23 +129,23 @@ const inputBody = document.querySelector("#inputBody");
 const inputMedia = document.querySelector("#inputMedia");
 const inputTags = document.querySelector("#inputTags");
 
-// async function newPost(token) {
-//   /* const inputPost = {
-//     title: inputTitle.value,
-//     body: inputBody.value,
-//     media: inputMedia.value,
-//     tags: inputTags.value,
-//   }; */
+async function newPost(token) {
+  const inputPost = {
+    title: inputTitle.value,
+    body: inputBody.value,
+    media: inputMedia.value,
+    tags: inputTags.value,
+  };
 
-//   const res = await fetch(postURL, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify(inputPost),
-//   });
-//   console.log(res);
-//   const postData = await res.json();
-//   console.log(postData);
-// }
+  const res = await fetch(postURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(inputPost),
+  });
+  console.log(res);
+  const postData = await res.json();
+  console.log(postData);
+}

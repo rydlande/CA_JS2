@@ -30,7 +30,7 @@ async function login() {
     response.innerText = `Email or password is incorrect`;
   } else {
     setTimeout(() => {
-      // window.location.href = "../public/feed";
+      window.location.href = "../public/feed";
     }, 1000);
   }
 }
