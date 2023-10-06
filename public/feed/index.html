@@ -10,9 +10,12 @@
       src="https://kit.fontawesome.com/17c7a6edf9.js"
       crossorigin="anonymous"
     ></script>
+    <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../js/script.js" defer></script>
     <script src="../../js/modules/validate.js" type="module" defer></script>
     <script src="../../js/card.js" type="module" defer></script>
+    <script src="../../js/modules/newPost.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100 overflow-x-hidden bg-primary">
       <section class="top">
@@ -85,10 +88,16 @@
       <div class="button-section m-md-3 mb-3 mb-lg-5 w-100">
         <div class="button-section-top  p-md-2 p-4 py-3 py-md-0">
           <div class="top-box d-flex gap-1 align-items-center justify-content-center">
-            <button class="btn btn-custom-new-post d-flex align-items-center justify-content-center">
-              NEW POST
-            <img class="" draggable="false" src="../../media/+icon.svg">
-            </button>
+            <button
+            id="buttonNewPost"
+            type="button"
+            class="btn btn-custom-new-post d-flex align-items-center justify-content-center"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            NEW POST
+            <img class="" draggable="false" src="../../media/+icon.svg" />
+          </button>
           </div>
         </div>
         <div class="button-section-middle d-flex">
@@ -126,5 +135,74 @@
         </div>
       </div>
     </footer>
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                  New post
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+
+              <!-- MODAL BODY -->
+              <div class="modal-body">
+                <!-- TITLE -->
+                <div id="modalTitle">
+                  <label for="inputTitle">Title:</label>
+                  <input type="text" id="inputTitle" class="form-control" />
+                </div>
+                <!-- BODY -->
+                <div id="modalBody">
+                  <label for="inputBody">Body:</label>
+                  <textarea
+                    name=""
+                    id="inputBody"
+                    class="form-control"
+                    cols="30"
+                    rows="5"
+                  ></textarea>
+                </div>
+                <!-- MEIDA -->
+                <div id="modalMedia">
+                  <label for="inputMedia">Image (url):</label>
+                  <input type="text" id="inputMedia" class="form-control" />
+                </div>
+                <!-- TAGS -->
+                <div id="modalTags">
+                  <label for="inputTags"
+                    >Make your post easier to find for others, you can use
+                    more than one tag by adding space between the
+                    tags</label
+                  >
+                  <input type="text" id="inputTags" class="form-control" />
+                </div>
+              </div>
+              <!-- SUBMIT -->
+              <div class="modal-footer">
+                <button
+                  type="sumbit"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
   </body>
 </html>
