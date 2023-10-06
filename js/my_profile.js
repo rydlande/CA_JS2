@@ -107,3 +107,5 @@ async function getPosts(name, token) {
     </div>`;
   }
 }
+
+async function newPost() {}
