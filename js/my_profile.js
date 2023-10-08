@@ -1,8 +1,11 @@
-const url = "https://api.noroff.dev/api/v1/social/profiles/";
+import renderCard from "./modules/renderCard.mjs";
 
+const url = "https://api.noroff.dev/api/v1/social/profiles/";
+const token = localStorage.getItem("token");
+const name = localStorage.getItem("name");
+
+/* FETCH PROFILE INFO */
 async function getToken() {
-  const token = localStorage.getItem("token");
-  const name = localStorage.getItem("name");
   const res = await fetch(url + name, {
     method: "GET",
     headers: {
@@ -14,7 +17,7 @@ async function getToken() {
   console.log(data);
   getProfile(data);
   getCount(data);
-  getPosts(name, token);
+  getPosts();
   // newPost(token);
 }
 getToken();
@@ -62,90 +65,67 @@ async function getCount(data) {
   `;
 }
 
-/* POSTS */
+/* USERS POSTS */
+const containerPosts = document.querySelector("#root-posts");
 const buttonMorePosts = document.querySelector("#buttonMorePosts");
 
 const postsPerPage = 10;
-const startIndex = 0;
+let startIndex = 0;
 
-async function getPosts(name, token) {
-  const res = await fetch(url + name + "/posts", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+async function getPosts() {
+  const res = await fetch(
+    url + name + "/posts?_author=true&_reactions=true&_comments=true",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   const usersPosts = await res.json();
   console.log(usersPosts);
   const slicedPosts = usersPosts.slice(startIndex, startIndex + postsPerPage);
-  console.log(slicedPosts);
-  renderPosts(slicedPosts);
-}
-
-/* KAN DENNE BRUKES SOM MODUL? */
-async function renderPosts(slicedPosts) {
-  const containerPosts = document.querySelector("#containerPosts");
-  slicedPosts.forEach((obj) => {
-    console.log(obj);
-    const { id, title, body, tags, media, created, updated } = obj;
-    if (!id) {
-      containerPosts.innerHTML = `
-          Looks like you don't have any posts yet.
-          Create your first post now!`;
-    } else {
-      containerPosts.append(createPost(title, body, media));
-    }
+  slicedPosts.forEach((item) => {
+    containerPosts.append(renderCard(item));
+    console.log(item);
+    newPost(item);
   });
-}
-
-function createPost(title, body, media) {
-  const cardPost = document.createElement("div");
-  const titlePost = document.createElement("h2");
-  const bodyPost = document.createElement("p");
-
-  cardPost.classList.add("cardPost");
-  titlePost.innerText = title;
-  bodyPost.innerText = body;
-  cardPost.append(titlePost, bodyPost);
-  if (media) {
-    const mediaPost = document.createElement("img");
-    mediaPost.src = media;
-    cardPost.appendChild(mediaPost);
-  }
-  return cardPost;
 }
 
 buttonMorePosts.addEventListener("click", () => {
   startIndex += postsPerPage;
-  renderPosts();
+  getPosts();
 });
+// buttonMorePosts.addEventListener("click", () => {
+//   startIndex += postsPerPage;
+//   renderPosts();
 
-/* ADD NEW POST */
-const postURL = "https://api.noroff.dev/api/v1/social/posts/";
+/* NEW POST */
+
+const postURL = "https://api.noroff.dev/api/v1/social/posts/slutt";
 const buttonNewPost = document.querySelector("#buttonNewPost");
 const inputTitle = document.querySelector("#inputTitle");
 const inputBody = document.querySelector("#inputBody");
 const inputMedia = document.querySelector("#inputMedia");
 const inputTags = document.querySelector("#inputTags");
 
-async function newPost(token) {
+async function newPost(item) {
   const inputPost = {
     title: inputTitle.value,
     body: inputBody.value,
     media: inputMedia.value,
-    tags: inputTags.value,
+    // tags: inputTags.value,       Se på senere: må være en string [], får "Bad Request".
   };
 
   const res = await fetch(postURL, {
     method: "POST",
+    body: JSON.stringify(inputPost),
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(inputPost),
   });
-  console.log(res);
   const postData = await res.json();
   console.log(postData);
 }

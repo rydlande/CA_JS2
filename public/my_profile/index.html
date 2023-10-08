@@ -16,8 +16,8 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="../../js/my_profile.js" defer></script>
-    <script src="../../js/validate.js" type="module" defer></script>
+    <script src="../../js/my_profile.js" type="module" defer></script>
+    <script src="../../js/modules/validate.js" type="module" defer></script>
     <title>My profile | The Garden</title>
   </head>
 
@@ -207,21 +207,19 @@
                 </div>
               </div>
             </div>
-
-            <div
-              class="w-100 d-flex justify-content-center align-items-center"
-              id="containerPosts"
-            ></div>
-            <button
-              id="buttonMorePosts"
-              class="btn btn-custom-secondary color"
-              style="color: black; width: 7rem"
-            >
-              Show more
-            </button>
           </div>
         </div>
       </section>
+      <section class="section-posts mt-5">
+        <div class="px-3" id="root-posts"></div>
+      </section>
+      <button
+        id="buttonMorePosts"
+        class="btn btn-custom-secondary color"
+        style="color: black; width: 7rem"
+      >
+        Show more
+      </button>
     </main>
 
     <!-- FOOTER -->
