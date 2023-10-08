@@ -97,14 +97,11 @@ buttonMorePosts.addEventListener("click", () => {
   startIndex += postsPerPage;
   getPosts();
 });
-// buttonMorePosts.addEventListener("click", () => {
-//   startIndex += postsPerPage;
-//   renderPosts();
 
 /* NEW POST */
 
 const postURL = "https://api.noroff.dev/api/v1/social/posts/slutt";
-const buttonNewPost = document.querySelector("#buttonNewPost");
+const buttonPostNewPost = document.querySelector("#buttonPostNewPost");
 const inputTitle = document.querySelector("#inputTitle");
 const inputBody = document.querySelector("#inputBody");
 const inputMedia = document.querySelector("#inputMedia");
@@ -129,3 +126,5 @@ async function newPost(item) {
   const postData = await res.json();
   console.log(postData);
 }
+
+buttonPostNewPost.addEventListener("click", () => {});
