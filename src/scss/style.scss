@@ -275,6 +275,9 @@ span {
     background-color: $secondary;
     z-index: 4;
 }
+#navbarSupportedContent{
+    transition: 0.3s;
+}
 #desktop-logo {
     display: none;
     min-width: 200px;
