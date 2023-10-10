@@ -6,13 +6,16 @@ const name = localStorage.getItem("name");
 
 /* FETCH PROFILE INFO */
 async function getToken() {
-  const res = await fetch(url + name, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(
+    url + name + "?_followers=true&_following=true&_posts=true",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   const data = await res.json();
   console.log(data);
   getProfile(data);
