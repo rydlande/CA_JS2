@@ -23,7 +23,9 @@ export default function renderCard(data) {
   if (!author.avatar) {
     creatorImage.style.display = "none";
   }
-  creator.href = `../../public/profile/index.html?=${author.name}`;
+
+  creator.href = `../../public/profile/?author=${author.name}`;
+
 
   const cardTop = document.createElement("div");
   cardTop.classList.add("cardTop");
@@ -34,20 +36,20 @@ export default function renderCard(data) {
     imageContainer.style.display = "none";
   }
   postImage.src = media;
-  cardContent.href = `../../public/posts/index.html?id=${id}`;
+  cardContent.href = `../../public/posts/?id=${id}`;
   imageContainer.append(postImage);
   cardContent.append(title, body, id, imageContainer);
   const cardBottom = document.createElement("div");
   cardBottom.classList.add("cardBottom");
   const commentsShow = document.createElement("a");
-  commentsShow.href = `../../public/posts/index.html?id=${id}`;
+  commentsShow.href = `../../public/posts/?id=${id}`;
   commentsShow.innerText = `${comments.length} comments`;
   commentsShow.classList.add("comments");
   const reactionsShow = document.createElement("a");
-  reactionsShow.href = `../../public/posts/index.html?id=${id}`;
+  reactionsShow.href = `../../public/posts/?id=${id}`;
   reactionsShow.innerText = `${reactions.length} reactions`;
   reactionsShow.classList.add("reactions");
-  cardBottom.append(commentsShow, reactionsShow);
+  cardBottom.append(reactionsShow, commentsShow);
   card.append(cardTop, cardContent, cardBottom);
   return card;
 }
