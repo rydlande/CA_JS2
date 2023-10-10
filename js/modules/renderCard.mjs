@@ -10,7 +10,18 @@ export default function renderCard(data) {
   const imageContainer = document.createElement("div");
   imageContainer.classList.add("imageContainer");
   const postImage = document.createElement("img");
-
+  const timestamp = document.createElement("p");
+  timestamp.classList.add("timestamp");
+  const minutesAgo = Math.floor((new Date() - new Date(data.created)) / 60000 )
+ if(minutesAgo > 59) {
+    timestamp.innerText = `${Math.floor(minutesAgo/60)} hours ago`;
+  } else if(Math.floor(minutesAgo/60) > 23){
+    timestamp.innerText = `${Math.floor((minutesAgo/60)/24)} days ago`;
+  } else if(minutesAgo < 1) {
+    timestamp.innerText = `Now`;
+  } else {
+    timestamp.innerText = `${minutesAgo} minutes ago`;
+ }
   const creator = document.createElement("a");
   creator.classList.add("creator");
   const creatorImage = document.createElement("img");
@@ -27,7 +38,7 @@ export default function renderCard(data) {
 
   const cardTop = document.createElement("div");
   cardTop.classList.add("cardTop");
-  cardTop.append(creator);
+  cardTop.append(creator, timestamp);
   const cardTitle = document.createElement("h2");
   cardTitle.innerText = title;
   if (!media) {

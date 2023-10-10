@@ -18,14 +18,24 @@ export default function renderCard(data) {
     const creatorImageContainer = document.createElement("div");
     const timestamp = document.createElement("p");
     timestamp.classList.add("timestamp");
-    timestamp.innerText = data.created + " ago";
+    const minutesAgo = Math.floor((new Date() - new Date(data.created)) / 60000 )
+   if(minutesAgo > 59) {
+      timestamp.innerText = `${Math.floor(minutesAgo/60)} hours ago`;
+    } else if(Math.floor(minutesAgo/60) > 23){
+      timestamp.innerText = `${Math.floor((minutesAgo/60)/24)} days ago`;
+    } else if(minutesAgo < 1) {
+      timestamp.innerText = `Now`;
+    } else {
+      timestamp.innerText = `${minutesAgo} minutes ago`;
+   }
+  
     creatorImageContainer.classList.add("creatorImageContainer");
     creatorImageContainer.append(creatorImage);
     creator.append(creatorImageContainer, author.name);
     if (!author.avatar) {
       creatorImage.style.display = "none";
     }
-    creator.href = `../../public/profile/?id=${author.id}`;
+    creator.href = `../../public/profile/?author=${author.id}`;
     const cardTop = document.createElement("div");
     cardTop.classList.add("cardTop");
     cardTop.append(creator, timestamp);
