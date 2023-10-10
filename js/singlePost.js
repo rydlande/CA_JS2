@@ -3,7 +3,7 @@ const params = new URLSearchParams(queryString);
 console.log(params)
 const id = params.get("id");
 console.log(id)
-import renderCard from './modules/renderCard.mjs';
+import renderSingleCard from './modules/renderSingleCard.mjs';
 
 async function renderPost() {
     const root = document.getElementById('root-single-post');
@@ -18,6 +18,6 @@ const token = localStorage.getItem("token");
     const data = await res.json()
     console.log(data)
     document.title = `Post by ${data.author} | The Garden`;
-    root.append(renderCard(data))
+    root.append(renderSingleCard(data))
 }
 renderPost();
