@@ -1,17 +1,17 @@
+/* import sosToken from "../testing/sosTest";
+console.log(sosToken); */
+
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const queryString = document.location.search;
-console.log(queryString);
 const params = new URLSearchParams(queryString);
-console.log(params);
-const name = params.get("author");
-console.log(name);
+const author = params.get("author");
+console.log(author);
 
 async function renderUsers() {
   const root = document.getElementById("root-single-post");
-  //   const name =
   const token = localStorage.getItem("token");
   const res = await fetch(
-    url /* + name + "?__following=true&_followers=true&_posts=true" */,
+    url + author + "?_followers=true&_following=true&_posts=true",
     {
       method: "GET",
       headers: {
@@ -22,4 +22,7 @@ async function renderUsers() {
   );
   const data = await res.json();
   console.log(data);
+  document.title = `${author} | The Garden`;
 }
+
+renderUsers();
