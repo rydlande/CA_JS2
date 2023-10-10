@@ -87,6 +87,19 @@
             cursor: pointer;
         }
     }
+    &-buttonMorePosts{
+        margin: 2rem;
+        background-color: $tertiary;
+        color: $secondary;
+        width: 7rem;
+        border: 2px solid $secondary;
+        box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
+        &:hover {
+            cursor: pointer;
+            border: 2px solid $complimentary;
+            color: $complimentary;
+        }
+    }
 }
 img{
     transition: 0.3s;
@@ -435,6 +448,7 @@ padding:0.2rem;
 .section-posts {
 width: 100%;
 display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
   }
