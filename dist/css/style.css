@@ -12034,6 +12034,11 @@ img {
 
 .navbar-toggler {
   color: transparent;
+  z-index: 99;
+}
+
+.hamburger {
+  z-index: 99;
 }
 
 .navBg .nav-active {
@@ -12051,7 +12056,7 @@ img {
   position: fixed;
   left: 0;
   background-color: #0D3B66;
-  z-index: 4;
+  z-index: 99;
 }
 
 .navbar-nav li a {
@@ -12198,6 +12203,7 @@ span {
 
 #navbarSupportedContent {
   transition: 0.3s;
+  z-index: 98;
 }
 
 #desktop-logo {
@@ -12421,6 +12427,7 @@ span {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  font-size: 0.9rem;
 }
 
 .cardTop {
@@ -12441,6 +12448,9 @@ span {
 
 .creatorImage {
   border-radius: 100%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .comments, .reactions {
@@ -12477,6 +12487,8 @@ span {
 
 .cardTop-single {
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .imageContainer-single {
@@ -12502,6 +12514,29 @@ span {
   min-width: 500px;
   max-height: 500px;
   object-fit: cover;
+}
+
+@media only screen and (min-width: 992px) {
+  #root-single-post {
+    width: 100%;
+  }
+  .container-single-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-single {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .cardContent-single {
+    width: 70%;
+  }
+}
+.cardBody {
+  padding-bottom: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */

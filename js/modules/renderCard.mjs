@@ -6,11 +6,21 @@ export default function renderCard(data) {
 
   const cardContent = document.createElement("a");
   cardContent.classList.add("cardContent");
-
   const imageContainer = document.createElement("div");
   imageContainer.classList.add("imageContainer");
   const postImage = document.createElement("img");
-
+  const timestamp = document.createElement("p");
+  timestamp.classList.add("timestamp");
+  const minutesAgo = Math.floor((new Date() - new Date(data.created)) / 60000 )
+ if(minutesAgo > 59) {
+    timestamp.innerText = `${Math.floor(minutesAgo/60)} hours ago`;
+  } else if(Math.floor(minutesAgo/60) > 23){
+    timestamp.innerText = `${Math.floor((minutesAgo/60)/24)} days ago`;
+  } else if(minutesAgo < 1) {
+    timestamp.innerText = `Now`;
+  } else {
+    timestamp.innerText = `${minutesAgo} minutes ago`;
+ }
   const creator = document.createElement("a");
   creator.classList.add("creator");
   const creatorImage = document.createElement("img");
@@ -23,14 +33,11 @@ export default function renderCard(data) {
   if (!author.avatar) {
     creatorImage.style.display = "none";
   }
-
   creator.href = `../../public/profile/?author=${author.name}`;
-
-
   const cardTop = document.createElement("div");
   cardTop.classList.add("cardTop");
-  cardTop.append(creator);
-  const cardTitle = document.createElement("h2");
+  cardTop.append(creator, timestamp);
+  const cardTitle = document.createElement("h5");
   cardTitle.innerText = title;
   if (!media) {
     imageContainer.style.display = "none";
@@ -38,7 +45,10 @@ export default function renderCard(data) {
   postImage.src = media;
   cardContent.href = `../../public/posts/?id=${id}`;
   imageContainer.append(postImage);
-  cardContent.append(title, body, id, imageContainer);
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("cardBody");
+  cardBody.innerText = body;
+  cardContent.append(cardTitle, cardBody, imageContainer);
   const cardBottom = document.createElement("div");
   cardBottom.classList.add("cardBottom");
   const commentsShow = document.createElement("a");
