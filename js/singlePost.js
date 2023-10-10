@@ -4,6 +4,7 @@ console.log(params);
 const id = params.get("id");
 console.log(id)
 import renderSingleCard from './modules/renderSingleCard.mjs';
+import checkForErrors from './modules/checkForErrors.mjs'
 
 async function renderPost() {
     const root = document.getElementById('root-single-post');
@@ -16,8 +17,9 @@ const token = localStorage.getItem("token");
           },
     })
     const data = await res.json()
+    checkForErrors(data)
     console.log(data)
-    document.title = `Post by ${data.author} | The Garden`;
+    document.title = `Post by ${data.author.name} | The Garden`;
     root.append(renderSingleCard(data))
 }
 renderPost();

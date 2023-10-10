@@ -1,3 +1,4 @@
+import comment from './comment.mjs';
 export default function renderCard(data) {
     const card = document.createElement("div");
     card.classList.add("card-single");
@@ -52,15 +53,14 @@ export default function renderCard(data) {
     imageContainer.append(postImage);
     cardContent.append(cardTitle, cardBody, imageContainer);
     const cardBottom = document.createElement("div");
-    cardBottom.classList.add("cardBottom");
-    const commentsShow = document.createElement("a");
-    commentsShow.href = `../../public/posts/?id=${id}`;
+    cardBottom.classList.add("cardBottom-single");
+    const commentsShow = document.createElement("div");
     commentsShow.innerText = `${comments.length} comments`;
     commentsShow.classList.add("comments");
-    const reactionsShow = document.createElement("a");
-    reactionsShow.href = `../../public/posts/?id=${id}`;
+    const reactionsShow = document.createElement("div");
     reactionsShow.innerText = `${reactions.length} reactions`;
     reactionsShow.classList.add("reactions");
+    comment(data, commentsShow)
     cardBottom.append(reactionsShow, commentsShow);
     card.append(cardTop, cardContent, cardBottom);
     return card;
