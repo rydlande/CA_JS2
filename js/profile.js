@@ -1,17 +1,17 @@
+const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const queryString = document.location.search;
+console.log(queryString);
 const params = new URLSearchParams(queryString);
 console.log(params);
-const id = params.get("id");
-console.log(id);
-import renderCard from "./modules/renderCard.mjs";
+const name = params.get("author");
+console.log(name);
 
-async function renderPost() {
+async function renderUsers() {
   const root = document.getElementById("root-single-post");
+  //   const name =
   const token = localStorage.getItem("token");
   const res = await fetch(
-    `https://api.noroff.dev/api/v1/social/posts/` +
-      id +
-      "?_author=true&_reactions=true&_comments=true",
+    url /* + name + "?__following=true&_followers=true&_posts=true" */,
     {
       method: "GET",
       headers: {
@@ -22,7 +22,4 @@ async function renderPost() {
   );
   const data = await res.json();
   console.log(data);
-  document.title = `Post by ${data.author} | The Garden`;
-  root.append(renderCard(data));
 }
-renderPost();

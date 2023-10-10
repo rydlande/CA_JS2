@@ -23,7 +23,7 @@ export default function renderCard(data) {
   if (!author.avatar) {
     creatorImage.style.display = "none";
   }
-  creator.href = `../../public/profile/index.html?id=${author.id}`;
+  creator.href = `../../public/profile/index.html?=${author.name}`;
 
   const cardTop = document.createElement("div");
   cardTop.classList.add("cardTop");
