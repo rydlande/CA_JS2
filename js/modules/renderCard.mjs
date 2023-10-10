@@ -6,7 +6,6 @@ export default function renderCard(data) {
 
   const cardContent = document.createElement("a");
   cardContent.classList.add("cardContent");
-
   const imageContainer = document.createElement("div");
   imageContainer.classList.add("imageContainer");
   const postImage = document.createElement("img");
@@ -34,14 +33,11 @@ export default function renderCard(data) {
   if (!author.avatar) {
     creatorImage.style.display = "none";
   }
-
   creator.href = `../../public/profile/?author=${author.name}`;
-
-
   const cardTop = document.createElement("div");
   cardTop.classList.add("cardTop");
   cardTop.append(creator, timestamp);
-  const cardTitle = document.createElement("h2");
+  const cardTitle = document.createElement("h5");
   cardTitle.innerText = title;
   if (!media) {
     imageContainer.style.display = "none";
@@ -49,7 +45,10 @@ export default function renderCard(data) {
   postImage.src = media;
   cardContent.href = `../../public/posts/?id=${id}`;
   imageContainer.append(postImage);
-  cardContent.append(title, body, id, imageContainer);
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("cardBody");
+  cardBody.innerText = body;
+  cardContent.append(cardTitle, cardBody, imageContainer);
   const cardBottom = document.createElement("div");
   cardBottom.classList.add("cardBottom");
   const commentsShow = document.createElement("a");

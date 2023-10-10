@@ -28,7 +28,7 @@ export default function renderCard(data) {
     } else {
       timestamp.innerText = `${minutesAgo} minutes ago`;
    }
-  
+
     creatorImageContainer.classList.add("creatorImageContainer");
     creatorImageContainer.append(creatorImage);
     creator.append(creatorImageContainer, author.name);
@@ -37,7 +37,7 @@ export default function renderCard(data) {
     }
     creator.href = `../../public/profile/?author=${author.id}`;
     const cardTop = document.createElement("div");
-    cardTop.classList.add("cardTop");
+    cardTop.classList.add("cardTop-single");
     cardTop.append(creator, timestamp);
     const cardTitle = document.createElement("h2");
     cardTitle.innerText = title;
