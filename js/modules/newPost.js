@@ -81,22 +81,22 @@ buttonNewPost.addEventListener('click', () => {
 }) */
 
 function createPost(title, body, media) {
-    const cardPost = document.createElement("div");
-    const titlePost = document.createElement("h2");
-    const bodyPost = document.createElement("p");
-  
-    cardPost.classList.add("cardPost");
-    titlePost.innerText = title;
-    bodyPost.innerText = body;
-    cardPost.append(titlePost, bodyPost);
-    if (media) {
-      const mediaPost = document.createElement("img");
-      mediaPost.src = media;
-      cardPost.appendChild(mediaPost);
-    }
-    return cardPost;
+  const cardPost = document.createElement("div");
+  const titlePost = document.createElement("h2");
+  const bodyPost = document.createElement("p");
+
+  cardPost.classList.add("cardPost");
+  titlePost.innerText = title;
+  bodyPost.innerText = body;
+  cardPost.append(titlePost, bodyPost);
+  if (media) {
+    const mediaPost = document.createElement("img");
+    mediaPost.src = media;
+    cardPost.appendChild(mediaPost);
   }
-  /* ADD NEW POST */
+  return cardPost;
+}
+/* ADD NEW POST */
 const postURL = "https://api.noroff.dev/api/v1/social/posts/";
 const buttonNewPost = document.querySelector("#buttonNewPost");
 const inputTitle = document.querySelector("#inputTitle");

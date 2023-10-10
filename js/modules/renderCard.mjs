@@ -23,7 +23,9 @@ export default function renderCard(data) {
   if (!author.avatar) {
     creatorImage.style.display = "none";
   }
+
   creator.href = `../../public/profile/?author=${author.name}`;
+
 
   const cardTop = document.createElement("div");
   cardTop.classList.add("cardTop");

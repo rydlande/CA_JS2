@@ -1,6 +1,6 @@
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
-console.log(params)
+console.log(params);
 const id = params.get("id");
 console.log(id)
 import renderSingleCard from './modules/renderSingleCard.mjs';

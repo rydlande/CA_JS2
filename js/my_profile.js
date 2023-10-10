@@ -127,4 +127,8 @@ async function newPost(item) {
   console.log(postData);
 }
 
-buttonPostNewPost.addEventListener("click", () => {});
+// buttonPostNewPost.addEventListener("click", () => {
+//   function renderModal() {
+//     const modal = document.createElement("div");
+//   }
+// });
