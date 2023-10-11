@@ -8,8 +8,7 @@ export default async function sosToken() {
   const name = localStorage.getItem("name");
   console.log(token);
   console.log(name);
-  console.log(SOSurl + `?name=${name}`);
-  const res = await fetch(SOSurl + `?name=${name}`, {
+  const res = await fetch(SOSurl, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +17,14 @@ export default async function sosToken() {
   });
   console.log(res);
   const data = await res.json();
-  console.log(data);
-  renderProfile(data);
+  console.log(data[0]);
+  data.forEach((user) => {
+    if (user.name === name) {
+      renderProfile(user);
+    } else {
+      window.location.href = "../../../auth/login.html";
+    }
+  });
+  // renderProfile(data);
 }
 sosToken();

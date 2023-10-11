@@ -1,6 +1,6 @@
 export default function renderProfile(data) {
   console.log(data);
-  const card = document.createElement("div");
+
   //AVATAR
   const containerAvatar = document.querySelector("#containerAvatar");
   const { name, banner, avatar } = data;
@@ -11,15 +11,14 @@ export default function renderProfile(data) {
     containerAvatar.innerHTML = `
     <img class=" profile-image-element rounded-circle" src="${avatar}">`;
   }
+
   //USERNAME
   const containerName = document.querySelector("#containerName");
   containerName.innerHTML = `
   <h1 class="p-4 text-secondary text-nowrap font-monospace">${name} 
   <small class="text-muted font-normal identifier">(Me)</small></h1>`;
-}
 
-/* NUMBER OF POSTS, FOLLOWING AND FOLLOWERS */
-async function getCount(data) {
+  //COUNT
   const containerCount = document.querySelector("#containerCount");
   const usersCount = data._count;
   const { posts, following, followers } = usersCount;
