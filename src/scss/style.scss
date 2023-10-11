@@ -476,7 +476,6 @@ max-width: 950px;
     width: 100%;
     color: black;
     text-decoration: none;
-    min-height: 300px;
 }
 .cardContent-single {
     padding-block: 1rem;
@@ -531,6 +530,10 @@ text-decoration: none;
     border-radius: 100%;;
 }
 .comments, .reactions {
+    color: $complimentary;
+    text-decoration: none;
+}
+.comments-single, .reactions-single {
     color: $complimentary;
     text-decoration: none;
 }

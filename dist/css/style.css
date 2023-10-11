@@ -12394,7 +12394,6 @@ span {
   width: 100%;
   color: black;
   text-decoration: none;
-  min-height: 300px;
 }
 
 .cardContent-single {
@@ -12458,6 +12457,11 @@ span {
 }
 
 .comments, .reactions {
+  color: #F95738;
+  text-decoration: none;
+}
+
+.comments-single, .reactions-single {
   color: #F95738;
   text-decoration: none;
 }
