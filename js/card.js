@@ -27,6 +27,7 @@ async function getPosts(){
 addEventListener('DOMContentLoaded', () => {
     getPosts()
 })
+
 buttonMorePosts.addEventListener("click", () => {
     startIndex += postsPerPage;
     getPosts();

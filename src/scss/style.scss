@@ -671,9 +671,11 @@ text-decoration: none;
 .cardBody {
     padding-bottom: 1rem;
 }
+
 .cardBody-single {
     padding-bottom: 1rem;
 }
+
 /* Error message */
 .error-message {
     display: flex;
@@ -689,6 +691,7 @@ text-decoration: none;
     top: 0;
     left: 0;
     position: fixed;
+
     width: 100vw;
     height: 100vh;
     align-items: center;

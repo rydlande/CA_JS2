@@ -22,6 +22,7 @@ export default function renderCard(data) {
     timestamp.innerText = `Now`;
   } else {
     timestamp.innerText = `${minutesAgo} minutes ago`;
+
  }
   const creatorImage = document.createElement("img");
   creatorImage.src = data.author.avatar;
@@ -35,6 +36,7 @@ export default function renderCard(data) {
       creatorImage.style.display = "none";
     }
     creator.href = `../../public/profile/?author=${data.author.name}`;
+
     const cardTop = document.createElement("div");
     cardTop.classList.add("cardTop-single");
     cardTop.append(creator, timestamp);
@@ -76,4 +78,6 @@ export default function renderCard(data) {
     cardBottom.append(reactionsShow, commentsShow);
     card.append(cardTop, cardContent, cardBottom);
     return card;
+
   }
+
