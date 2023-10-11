@@ -12212,32 +12212,24 @@ span {
   min-width: 200px;
 }
 
-.button-section {
-  display: grid;
-  grid-template-rows: 1;
-  grid-template-columns: 9;
-}
-
-.button-section-top {
-  grid-row: 1;
-  grid-column: 1/2;
+.button-section-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .button-section-middle {
-  grid-row: 1;
-  grid-column: 7/8;
+  margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
 .button-section-bottom {
-  grid-row: 1;
-  grid-column: 8/9;
+  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 1rem;
 }
 
 .button-section-bottom button {
@@ -12324,6 +12316,8 @@ span {
   .desktop-logo-elem {
     display: flex;
     width: 200px;
+    max-height: 82px;
+    object-fit: cover;
   }
   .logo-img {
     display: none;
@@ -12398,9 +12392,16 @@ span {
 .cardContent {
   padding-block: 1rem;
   width: 100%;
-  min-height: 100px;
   color: black;
   text-decoration: none;
+}
+
+.cardContent-single {
+  padding-block: 1rem;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  min-height: 300px;
 }
 
 .imageContainer {
@@ -12460,6 +12461,11 @@ span {
   text-decoration: none;
 }
 
+.comments-single, .reactions-single {
+  color: #F95738;
+  text-decoration: none;
+}
+
 .comments:hover, .reactions:hover {
   color: #0D3B66;
 }
@@ -12478,6 +12484,9 @@ span {
 .card-single {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 #root-single-post {
@@ -12506,11 +12515,6 @@ span {
   padding-block: 2rem;
 }
 
-.cardContent-single {
-  min-height: 300px;
-  padding-top: 1rem;
-}
-
 .card-single img {
   max-width: 100%;
   object-fit: cover;
@@ -12523,6 +12527,7 @@ span {
   gap: 1rem;
   padding-top: 1rem;
 }
+
 
 .comment-container {
   display: flex;
@@ -12549,7 +12554,7 @@ span {
 }
 
 .creator-single {
-  width: 10rem;
+  min-width: 15rem;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -12592,6 +12597,10 @@ span {
   padding-bottom: 1rem;
 }
 
+
+.cardBody-single {
+  padding-bottom: 1rem;
+}
 /* Error message */
 .error-message {
   display: flex;
@@ -12607,7 +12616,7 @@ span {
   z-index: 99;
   top: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   align-items: center;
