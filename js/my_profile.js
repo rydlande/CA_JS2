@@ -1,12 +1,11 @@
-import renderCard from "./modules/renderCard.mjs";
-import renderProfile from "./modules/renderProfileInfo.mjs";
+/* PROFILE */
+import renderProfile from "./modules/renderProfile.mjs";
 
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const token = localStorage.getItem("token");
 const name = localStorage.getItem("name");
 
-/* FETCH PROFILE INFO */
-async function getToken() {
+async function getProfile() {
   const res = await fetch(
     url + name + "?_followers=true&_following=true&_posts=true",
     {
@@ -18,15 +17,14 @@ async function getToken() {
     }
   );
   const data = await res.json();
-  console.log(data);
   renderProfile(data);
-  getCount(data);
   getPosts();
-  // newPost(token);
 }
-getToken();
+getProfile();
 
 /* USERS POSTS */
+import renderCard from "./modules/renderCard.mjs";
+
 const containerPosts = document.querySelector("#root-posts");
 const buttonMorePosts = document.querySelector("#buttonMorePosts");
 
@@ -49,8 +47,6 @@ async function getPosts() {
   const slicedPosts = usersPosts.slice(startIndex, startIndex + postsPerPage);
   slicedPosts.forEach((item) => {
     containerPosts.append(renderCard(item));
-    console.log(item);
-    newPost(item);
   });
 }
 
@@ -59,37 +55,21 @@ buttonMorePosts.addEventListener("click", () => {
   getPosts();
 });
 
-/* NEW POST */
+/* CREATE POST */
+import createPost from "./modules/createPost.mjs";
 
-const postURL = "https://api.noroff.dev/api/v1/social/posts/slutt";
-const buttonPostNewPost = document.querySelector("#buttonPostNewPost");
-const inputTitle = document.querySelector("#inputTitle");
-const inputBody = document.querySelector("#inputBody");
-const inputMedia = document.querySelector("#inputMedia");
-const inputTags = document.querySelector("#inputTags");
+const response = document.querySelector("#response");
+const buttonPostNewPost = document.getElementById("buttonPostNewPost");
 
-async function newPost(item) {
-  const inputPost = {
-    title: inputTitle.value,
-    body: inputBody.value,
-    media: inputMedia.value,
-    // tags: inputTags.value,       Se på senere: må være en string [], får "Bad Request".
-  };
+buttonPostNewPost.addEventListener("click", (e) => {
+  e.preventDefault();
+  const title = document.getElementById("inputTitle").value;
+  if (!title) {
+    response.style.color = "red";
+    response.innerText = `Title is required`;
+  } else {
+    createPost();
+  }
+});
 
-  const res = await fetch(postURL, {
-    method: "POST",
-    body: JSON.stringify(inputPost),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const postData = await res.json();
-  console.log(postData);
-}
-
-// buttonPostNewPost.addEventListener("click", () => {
-//   function renderModal() {
-//     const modal = document.createElement("div");
-//   }
-// });
+/* UPDATE PROFILE - method: PUT */
