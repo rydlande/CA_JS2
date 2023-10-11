@@ -1,3 +1,4 @@
+/* PROFILE INFO */
 import renderProfile from "./modules/renderAuthors.mjs";
 
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
@@ -24,9 +25,11 @@ async function renderUsers() {
   document.title = `${author} | The Garden`;
   renderProfile(data);
   getPosts();
+  follow(data);
+  unfollow(data);
 }
-renderUsers();
 
+/* AUTHORS POSTS */
 import renderCard from "./modules/renderCard.mjs";
 
 const containerPosts = document.querySelector("#root-posts");
@@ -58,3 +61,38 @@ buttonMorePosts.addEventListener("click", () => {
   startIndex += postsPerPage;
   getPosts();
 });
+
+/* FOLLOW/UNFOLLOW - method: PUT */
+import follow from "./modules/follow.mjs";
+import unfollow from "./modules/unfollow.mjs";
+const name = localStorage.getItem("name");
+const buttonFUF = document.querySelector("#buttonFUF");
+
+async function getProfile() {
+  const res = await fetch(
+    url + name + "?_followers=true&_following=true&_posts=true",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  const myData = await res.json();
+  const myFollowings = myData.following;
+  console.log(myFollowings);
+}
+/* 
+buttonFUF.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (author != myFollowing) {
+    follow(data);
+  } else {
+    unfollow(data);
+  }
+  location.reload();
+});
+ */
+getProfile();
+renderUsers();

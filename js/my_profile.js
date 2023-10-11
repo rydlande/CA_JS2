@@ -1,5 +1,5 @@
-/* PROFILE */
-import renderProfile from "./modules/renderProfile.mjs";
+/* PROFILE INFO */
+import renderProfile from "./modules/renderMyProfile.mjs";
 
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const token = localStorage.getItem("token");
@@ -17,6 +17,7 @@ async function getProfile() {
     }
   );
   const data = await res.json();
+  document.title = `My profile (@${name}) | The Garden`;
   renderProfile(data);
   getPosts();
 }
