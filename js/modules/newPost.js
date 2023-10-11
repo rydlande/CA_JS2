@@ -1,3 +1,57 @@
+import sosToken from "../../testing/profiles.json";
+
+/* function createPost(title, body, media) {
+  const cardPost = document.createElement("div");
+  const titlePost = document.createElement("h2");
+  const bodyPost = document.createElement("p");
+
+  cardPost.classList.add("cardPost");
+  titlePost.innerText = title;
+  bodyPost.innerText = body;
+  cardPost.append(titlePost, bodyPost);
+  if (media) {
+    const mediaPost = document.createElement("img");
+    mediaPost.src = media;
+    cardPost.appendChild(mediaPost);
+  }
+  return cardPost;
+} */
+
+/* CREATE NEW POST */
+const postURL = "https://api.noroff.dev/api/v1/social/posts/";
+const inputTitle = document.querySelector("#inputTitle");
+const inputBody = document.querySelector("#inputBody");
+const inputMedia = document.querySelector("#inputMedia");
+const inputTags = document.querySelector("#inputTags");
+
+async function newPost(token) {
+  const inputPost = {
+    title: inputTitle.value,
+    body: inputBody.value,
+    media: inputMedia.value,
+    tags: inputTags.value,
+  };
+
+  const res = await fetch(postURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(inputPost),
+  });
+  console.log(res);
+  const postData = await res.json();
+  console.log(postData);
+}
+
+const buttonCreatePost = document.querySelector("#buttonCreatePost");
+const body = document.querySelector("body");
+
+buttonCreatePost.addEventListener("click", () => {
+  newPost();
+});
+
 /* const buttonNewPost = document.querySelector('#buttonNewPost');
 const body = document.querySelector('body');
 
@@ -79,48 +133,3 @@ buttonNewPost.addEventListener('click', () => {
     }
     renderModal();
 }) */
-
-function createPost(title, body, media) {
-  const cardPost = document.createElement("div");
-  const titlePost = document.createElement("h2");
-  const bodyPost = document.createElement("p");
-
-  cardPost.classList.add("cardPost");
-  titlePost.innerText = title;
-  bodyPost.innerText = body;
-  cardPost.append(titlePost, bodyPost);
-  if (media) {
-    const mediaPost = document.createElement("img");
-    mediaPost.src = media;
-    cardPost.appendChild(mediaPost);
-  }
-  return cardPost;
-}
-/* ADD NEW POST */
-const postURL = "https://api.noroff.dev/api/v1/social/posts/";
-const buttonNewPost = document.querySelector("#buttonNewPost");
-const inputTitle = document.querySelector("#inputTitle");
-const inputBody = document.querySelector("#inputBody");
-const inputMedia = document.querySelector("#inputMedia");
-const inputTags = document.querySelector("#inputTags");
-
-async function newPost(token) {
-  const inputPost = {
-    title: inputTitle.value,
-    body: inputBody.value,
-    media: inputMedia.value,
-    tags: inputTags.value,
-  };
-
-  const res = await fetch(postURL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(inputPost),
-  });
-  console.log(res);
-  const postData = await res.json();
-  console.log(postData);
-}
