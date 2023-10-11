@@ -12212,32 +12212,24 @@ span {
   min-width: 200px;
 }
 
-.button-section {
-  display: grid;
-  grid-template-rows: 1;
-  grid-template-columns: 9;
-}
-
-.button-section-top {
-  grid-row: 1;
-  grid-column: 1/2;
+.button-section-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .button-section-middle {
-  grid-row: 1;
-  grid-column: 7/8;
+  margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
 .button-section-bottom {
-  grid-row: 1;
-  grid-column: 8/9;
+  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 1rem;
 }
 
 .button-section-bottom button {
@@ -12403,7 +12395,6 @@ span {
   color: black;
   text-decoration: none;
   min-height: 300px;
-  padding-left: 2rem;
 }
 
 .cardContent-single {
@@ -12412,7 +12403,6 @@ span {
   color: black;
   text-decoration: none;
   min-height: 300px;
-  padding-left: 2rem;
 }
 
 .imageContainer {
@@ -12622,7 +12612,7 @@ span {
   z-index: 99;
   top: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   align-items: center;
