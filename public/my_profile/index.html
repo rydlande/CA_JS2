@@ -15,16 +15,13 @@
       src="https://kit.fontawesome.com/17c7a6edf9.js"
       crossorigin="anonymous"
     ></script>
-
-    <!-- DENNE SKAL FJERNES, BRUKES FOR Å UNNGÅ PROBLEMER MED NOROFF API -->
-    <!-- <script src="../../testing/sosGetProfiles.js" type="module" defer></script> -->
-
     <script src="../../js/my_profile.js" type="module" defer></script>
     <script src="../../js/modules/validate.js" type="module" defer></script>
     <title>My profile | The Garden</title>
   </head>
 
   <body class="d-flex flex-column min-vh-100 overflow-x-hidden bg-primary">
+<!-- NAVBAR -->
     <section class="top">
       <div class="container-fluid">
         <div class="row">
@@ -92,13 +89,12 @@
       </div>
     </section>
 
-    <main class="h-auto">
+<!-- PROFILE -->    
+    <main class="h-auto mt-5 pt-5">
       <section class="middle d-flex flex-column align-items-center">
         <div
           class="profile-middle-container w-50 d-flex flex-column align-items-center justify-content-center"
         >
-        
-<!-- PROFILE -->
           <div
             class="profile-image-container position-relative d-flex align-items-end justify-content-end"
             id="containerAvatar"
@@ -112,16 +108,16 @@
 
           <div class="icon-container w-100 row" id="containerCount"></div>
 
+<!-- POSTS -->
           <div class="profile-posts min-vw-100 py-4 px-4">
             
-<!-- POSTS -->
             <h6
               class="font-monospace text-secondary w-100 d-flex justify-content-center align-items-center"
             >
               MY POSTS
             </h6>
 
-            <!-- BUTTON - NEW POST -->
+            <!-- MODAL - CREATE NEW POST -->
             <div class="modalCreatePost">
             <button
               id="buttonCreatePost"
@@ -212,13 +208,16 @@
                 </div>
               </div>
             </div>
+            </div>
           </div>
-          </div>
+
         </div>
       </section>
+
       <section class="section-posts mt-5">
         <div class="px-3" id="root-posts"></div>
       </section>
+
       <button
         id="buttonMorePosts"
         class="btn btn-custom-buttonMorePosts"
