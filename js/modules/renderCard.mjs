@@ -53,11 +53,11 @@ export default function renderCard(data) {
   cardBottom.classList.add("cardBottom");
   const commentsShow = document.createElement("a");
   commentsShow.href = `../../public/posts/?id=${id}`;
-  commentsShow.innerText = `${comments.length} comments`;
+  commentsShow.innerText = `${data._count.comments} comments`;
   commentsShow.classList.add("comments");
   const reactionsShow = document.createElement("a");
   reactionsShow.href = `../../public/posts/?id=${id}`;
-  reactionsShow.innerText = `${reactions.length} reactions`;
+  reactionsShow.innerText = `${data._count.reactions} reactions`;
   reactionsShow.classList.add("reactions");
   cardBottom.append(reactionsShow, commentsShow);
   card.append(cardTop, cardContent, cardBottom);
