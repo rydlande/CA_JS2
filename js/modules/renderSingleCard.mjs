@@ -1,10 +1,12 @@
 import comment from './comment.mjs';
+import postComment from './postComment.mjs';
 export default function renderCard(data) {
-    let { title, body, media, comments, reactions } = data;
-    const cardContent = document.createElement("a");
-    cardContent.classList.add("cardContent-single");
-    const imageContainer = document.createElement("div");
-    imageContainer.classList.add("imageContainer");
+  const url = `https://api.noroff.dev/api/v1/social/posts/${data.id}/comment`;
+  let { title, body, media, comments, reactions } = data;
+  const cardContent = document.createElement("a");
+  cardContent.classList.add("cardContent-single");
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("imageContainer");
   const card = document.createElement("div");
   card.classList.add("card-single");
   const creator = document.createElement("a");
@@ -51,10 +53,24 @@ export default function renderCard(data) {
     const cardBottom = document.createElement("div");
     cardBottom.classList.add("cardBottom-single");
     const commentsShow = document.createElement("div");
-    commentsShow.innerText = `${comments.length} comments`;
-    commentsShow.classList.add("comments");
+    commentsShow.innerHTML = `<h5>Comments</h5>`;
+    commentsShow.classList.add("commentsShow");
+    const commentInput = document.createElement('input');
+    commentInput.classList.add('input-group');
+    commentInput.classList.add('input-group-custom');
+    commentInput.classList.add('comment-input');
+    commentInput.placeholder = "Write a comment...";
+    const commentButton = document.createElement('button');
+    commentButton.classList.add('btn');
+    commentButton.classList.add('btn-custom-new-post');
+    commentButton.classList.add('comment-btn');
+    commentButton.innerText = "Post";  
+    commentButton.addEventListener('click', ()=> {
+      postComment(url)
+    })
+    commentsShow.append(commentInput, commentButton);
     const reactionsShow = document.createElement("div");
-    reactionsShow.innerText = `${reactions.length} reactions`;
+    reactionsShow.innerText = `${data._count.reactions} reactions`;
     reactionsShow.classList.add("reactions");
     comment(data, commentsShow)
     cardBottom.append(reactionsShow, commentsShow);

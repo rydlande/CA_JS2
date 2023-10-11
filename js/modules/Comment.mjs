@@ -3,13 +3,26 @@ export default function comment(data, appendTo){
     commentContainer.classList.add('comment-container');
     const commentForm = document.createElement('form');
     commentForm.classList.add('comment-form');
-    data.comments.forEach((item)=> {
+    const filteredByDate = data.comments.sort((b, a) => new Date(a.created) - new Date(b.created));
+    filteredByDate.forEach((item) => {
     const comment = document.createElement('div');
     comment.classList.add('comment');
     const commentBody = document.createElement('p');
     commentBody.classList.add('comment-body');
     commentBody.innerText = item.body;
     const commentHeader = document.createElement('div');
+    const timestamp = document.createElement("p");
+    timestamp.classList.add("timestamp");
+    const minutesAgo = Math.floor((new Date() - new Date(item.created)) / 60000 )
+   if(minutesAgo > 59) {
+      timestamp.innerText = `${Math.floor(minutesAgo/60)} hours ago`;
+    } else if(Math.floor(minutesAgo/60) > 23){
+      timestamp.innerText = `${Math.floor((minutesAgo/60)/24)} days ago`;
+    } else if(minutesAgo < 1) {
+      timestamp.innerText = `Now`;
+    } else {
+      timestamp.innerText = `${minutesAgo} minutes ago`;
+   }
     commentHeader.classList.add('comment-header');
     const creator = document.createElement("a");
     creator.classList.add("creator-single");
@@ -24,7 +37,7 @@ export default function comment(data, appendTo){
           creatorImage.style.display = "none";
         }
         creator.href = `../../public/profile/?author=${item.author.name}`;
-        commentHeader.append(creator)
+        commentHeader.append(creator, timestamp)
     comment.append(commentHeader, commentBody, commentForm)
     commentContainer.append(comment);
 })

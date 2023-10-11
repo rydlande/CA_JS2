@@ -6,6 +6,7 @@ console.log(id)
 import renderSingleCard from './modules/renderSingleCard.mjs';
 import checkForErrors from './modules/checkForErrors.mjs'
 
+
 async function renderPost() {
     const root = document.getElementById('root-single-post');
 const token = localStorage.getItem("token");
@@ -22,4 +23,14 @@ const token = localStorage.getItem("token");
     document.title = `Post by ${data.author.name} | The Garden`;
     root.append(renderSingleCard(data))
 }
-renderPost();
+renderPost(); 
+
+/* async function renderPost() {
+    const root = document.getElementById('root-single-post');
+    const res = await fetch(`../../TESTFILES/posts.json`)
+    const data = await res.json()
+    console.log(data[0])
+    document.title = `Post by ${data[1].author.name} | The Garden`;
+    root.append(renderSingleCard(data[19]))
+}
+renderPost(); */

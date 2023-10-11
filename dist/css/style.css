@@ -12527,23 +12527,26 @@ span {
   width: 100%;
   gap: 1rem;
   padding-top: 1rem;
-  padding-left: 2rem;
+  padding: 1.3rem;
+  max-width: 500px;
 }
 
 .comment-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.3rem;
+  padding-top: 1rem;
 }
 
 .comment {
   width: 100%;
-  height: 3rem;
+  height: fit-content;
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
   border-radius: 5px;
-  align-items: center;
+  border: 1px solid black;
+  padding: 1.5rem;
+  gap: 1rem;
 }
 
 .comment-body {
@@ -12552,23 +12555,33 @@ span {
   display: flex;
   align-items: center;
   margin: 0;
+  font-size: 1rem;
+  color: #0D3B66;
 }
 
 .creator-single {
-  min-width: 15rem;
+  min-width: fit-content;
+  width: 100%;
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: flex-start;
   color: black;
   text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .comment-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 1rem;
+}
+
+.commentsShow {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-btn {
+  margin-top: 0.5rem;
 }
 
 @media only screen and (min-width: 992px) {
@@ -12628,6 +12641,17 @@ span {
 @media only screen and (max-width: 500px) {
   #root-posts {
     width: 95%;
+  }
+  .comment-header {
+    display: flex;
+    flex-direction: column;
+  }
+  .cardTop-single {
+    display: flex;
+    flex-direction: column;
+  }
+  .cardBottom-single {
+    padding: 0;
   }
 }
 
