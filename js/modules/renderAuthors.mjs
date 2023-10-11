@@ -3,21 +3,18 @@ export default function renderProfile(data) {
 
   //AVATAR
   const containerAvatar = document.querySelector("#containerAvatar");
+  const defaultAvatar = document.querySelector("#defaultAvatar");
+  const profileAvatar = document.querySelector("#profileAvatar");
+
   const { name, banner, avatar } = data;
   if (!avatar) {
-    containerAvatar.innerHTML = `
+    defaultAvatar.innerHTML = `
       <img class=" profile-image-element rounded-circle" src="../../media/ian-dooley-hpTH5b6mo2s-unsplash.jpg">
-      <button
-            class="btn btn-custom-follow rounded-circle d-flex align-items-center justify-content-center position-absolute">
-            <img class="" src="../../media//+icon.svg" />
-        </button>`;
+      `;
   } else {
-    containerAvatar.innerHTML = `
-      <img class=" profile-image-element rounded-circle" src="${avatar}">
-      <button
-            class="btn btn-custom-follow rounded-circle d-flex align-items-center justify-content-center position-absolute">
-            <img class="" src="../../media//+icon.svg" />
-        </button>`;
+    defaultAvatar.style.display = "none";
+    profileAvatar.innerHTML = `
+      <img class=" profile-image-element rounded-circle" src="${avatar}">`;
   }
 
   //USERNAME
