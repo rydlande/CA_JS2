@@ -1,4 +1,5 @@
 export default function renderProfile(data) {
+  console.log(data);
   const card = document.createElement("div");
   //AVATAR
   const containerAvatar = document.querySelector("#containerAvatar");
