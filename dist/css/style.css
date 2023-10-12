@@ -12397,11 +12397,13 @@ span {
 }
 
 .cardContent-single {
-  padding-block: 1rem;
+  padding: 1rem;
   width: 100%;
   color: black;
   text-decoration: none;
   min-height: 300px;
+  border: 1px solid rgba(161, 159, 159, 0.4941176471);
+  border-radius: 5px;
 }
 
 .imageContainer {
@@ -12544,7 +12546,7 @@ span {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid rgba(161, 159, 159, 0.4941176471);
   padding: 1.5rem;
   gap: 1rem;
 }
