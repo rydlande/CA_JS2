@@ -5,7 +5,7 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const author = params.get("author");
 
-export default async function unfollow(data) {
+export default async function follow(data) {
   const res = await fetch(urlFUF + author + "/unfollow", {
     method: "PUT",
     headers: {
@@ -15,4 +15,5 @@ export default async function unfollow(data) {
     body: JSON.stringify(data),
   });
   const resData = await res.json();
+  console.log(resData);
 }
