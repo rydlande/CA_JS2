@@ -1,14 +1,21 @@
+const username = localStorage.getItem("name");
+console.log(username);
+
 export default function renderCard(data) {
   const card = document.createElement("div");
   card.classList.add("card");
 
   let { title, body, id, media, author, comments, reactions } = data;
+  console.log(author.name);
 
+  /* post author and timestamp */
   const cardContent = document.createElement("a");
   cardContent.classList.add("cardContent");
+  //image
   const imageContainer = document.createElement("div");
   imageContainer.classList.add("imageContainer");
   const postImage = document.createElement("img");
+  //timestamp
   const timestamp = document.createElement("p");
   timestamp.classList.add("timestamp");
   const minutesAgo = Math.floor((new Date() - new Date(data.created)) / 60000);
@@ -21,8 +28,10 @@ export default function renderCard(data) {
   } else {
     timestamp.innerText = `${minutesAgo} minutes ago`;
   }
+  //creator
   const creator = document.createElement("a");
   creator.classList.add("creator");
+  //avatar
   const creatorImage = document.createElement("img");
   creatorImage.src = author.avatar;
   creatorImage.classList.add("creatorImage");
@@ -37,8 +46,11 @@ export default function renderCard(data) {
   const cardTop = document.createElement("div");
   cardTop.classList.add("cardTop");
   cardTop.append(creator, timestamp);
+
+  /* post title, body and image */
   const cardTitle = document.createElement("h5");
-  cardTitle.innerHTML = title || `<p class="no-text-title">The post has no title</p>`;;
+  cardTitle.innerHTML =
+    title || `<p class="no-text-title">The post has no title</p>`;
   if (!media) {
     imageContainer.style.display = "none";
   }
@@ -47,19 +59,40 @@ export default function renderCard(data) {
   imageContainer.append(postImage);
   const cardBody = document.createElement("div");
   cardBody.classList.add("cardBody");
-  cardBody.innerHTML = body || `<p class="no-text-body">The post has no text</p>`;;
+  cardBody.innerHTML =
+    body || `<p class="no-text-body">The post has no text</p>`;
   cardContent.append(cardTitle, cardBody, imageContainer);
+
+  /* reactions, comments and edit/delete */
   const cardBottom = document.createElement("div");
   cardBottom.classList.add("cardBottom");
+  //comments
   const commentsShow = document.createElement("a");
   commentsShow.href = `../../public/posts/?id=${id}`;
   commentsShow.innerText = `${data._count.comments} comments`;
   commentsShow.classList.add("comments");
+  //reactions
   const reactionsShow = document.createElement("a");
   reactionsShow.href = `../../public/posts/?id=${id}`;
   reactionsShow.innerText = `${data._count.reactions} reactions`;
   reactionsShow.classList.add("reactions");
-  cardBottom.append(reactionsShow, commentsShow);
+  // edit & delete
+  const options = document.createElement("div");
+  options.classList.add("dropdown");
+
+  if (username === author.name) {
+    options.innerHTML = `
+    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="bi bi-three-dots-vertical"></i>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>`;
+  }
+
+  cardBottom.append(reactionsShow, commentsShow, options);
   card.append(cardTop, cardContent, cardBottom);
   return card;
 }
