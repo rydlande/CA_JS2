@@ -38,7 +38,7 @@ export default function renderCard(data) {
   cardTop.classList.add("cardTop");
   cardTop.append(creator, timestamp);
   const cardTitle = document.createElement("h5");
-  cardTitle.innerText = title;
+  cardTitle.innerHTML = title || `<p class="no-text-title">The post has no title</p>`;;
   if (!media) {
     imageContainer.style.display = "none";
   }
@@ -47,7 +47,7 @@ export default function renderCard(data) {
   imageContainer.append(postImage);
   const cardBody = document.createElement("div");
   cardBody.classList.add("cardBody");
-  cardBody.innerText = body;
+  cardBody.innerHTML = body || `<p class="no-text-body">The post has no text</p>`;;
   cardContent.append(cardTitle, cardBody, imageContainer);
   const cardBottom = document.createElement("div");
   cardBottom.classList.add("cardBottom");
