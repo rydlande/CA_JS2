@@ -41,14 +41,14 @@ export default function renderCard(data) {
     cardTop.classList.add("cardTop-single");
     cardTop.append(creator, timestamp);
     const cardTitle = document.createElement("h2");
-    cardTitle.innerText = title;
+    cardTitle.innerHTML = title || `<p class="no-text-title">The post has no title</p>`;
     if (!media) {
       imageContainer.style.display = "none";
     }
     card.style.zIndex="4"
     const cardBody = document.createElement("div");
     cardBody.classList.add("cardBody-single");
-    cardBody.innerText = body;
+    cardBody.innerHTML = body || `<p class="no-text-body">The post has no body text</p>`;
     postImage.src = media;
     imageContainer.append(postImage);
     cardContent.append(cardTitle, cardBody, imageContainer);
@@ -57,11 +57,13 @@ export default function renderCard(data) {
     const commentsShow = document.createElement("div");
     commentsShow.innerHTML = `<h5>Comments</h5>`;
     commentsShow.classList.add("commentsShow");
-    const commentInput = document.createElement('input');
+    const commentInput = document.createElement('textarea');
     commentInput.classList.add('input-group');
     commentInput.classList.add('input-group-custom');
     commentInput.classList.add('comment-input');
     commentInput.placeholder = "Write a comment...";
+    const commentPostContainer = document.createElement('div');
+    commentPostContainer.classList.add('comment-post-container');
     const commentButton = document.createElement('button');
     commentButton.classList.add('btn');
     commentButton.classList.add('btn-custom-new-post');
@@ -70,7 +72,8 @@ export default function renderCard(data) {
     commentButton.addEventListener('click', ()=> {
       postComment(url)
     })
-    commentsShow.append(commentInput, commentButton);
+    commentPostContainer.append(commentInput, commentButton);
+    commentsShow.append(commentPostContainer);
     const reactionsShow = document.createElement("div");
     reactionsShow.innerText = `${data._count.reactions} reactions`;
     reactionsShow.classList.add("reactions");
@@ -78,6 +81,5 @@ export default function renderCard(data) {
     cardBottom.append(reactionsShow, commentsShow);
     card.append(cardTop, cardContent, cardBottom);
     return card;
-
   }
 

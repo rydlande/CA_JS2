@@ -597,7 +597,6 @@ text-decoration: none;
     gap: 1rem;
     padding-top: 1rem;
     padding: 1.3rem;
-    max-width: 500px;
 }
 .comment-container{
     display: flex;
@@ -643,7 +642,19 @@ text-decoration: none;
     flex-direction: column;
 }
 .comment-btn {
-    margin-top: 0.5rem;
+height: 100%;
+}
+.comment-post-container {
+    display: flex;
+    gap: 0.3rem;
+}
+.comment-post-container textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: 1px solid #a19f9f7e;
+    border-radius: 5px;
+    padding: 0.5rem;
 }
 @media only screen and (min-width: 992px) {
 #root-single-post{
@@ -667,6 +678,9 @@ text-decoration: none;
 
 }
 .cardContent-single {
+    width: 70%;
+}
+.cardBottom-single {
     width: 70%;
 }
 }
@@ -715,4 +729,7 @@ text-decoration: none;
 .cardBottom-single {
     padding: 0;
 }
+}
+.no-text-body, .no-text-title {
+color: rgba(91, 91, 91, 0.326);
 }
