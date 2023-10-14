@@ -19,15 +19,19 @@ export default function renderCard(data) {
   const timestamp = document.createElement("p");
   timestamp.classList.add("timestamp");
   const minutesAgo = Math.floor((new Date() - new Date(data.created)) / 60000);
-  if (minutesAgo > 59) {
-    timestamp.innerText = `${Math.floor(minutesAgo / 60)} hours ago`;
-  } else if (Math.floor(minutesAgo / 60) > 23) {
-    timestamp.innerText = `${Math.floor(minutesAgo / 60 / 24)} days ago`;
-  } else if (minutesAgo < 1) {
+if(minutesAgo > 59 && minutesAgo < 1440) {
+    timestamp.innerText = `${Math.floor(minutesAgo/60)} hours ago`;
+  } else if(minutesAgo > 1439 && minutesAgo < 43800){
+    timestamp.innerText = `${Math.floor((minutesAgo/60)/24)} days ago`;
+  } else if(minutesAgo > 10079 && minutesAgo < 43799){
+    timestamp.innerText = `${Math.floor(((minutesAgo/60)/24)/7)} weeks ago`;
+  } else if(minutesAgo > 43800){
+    timestamp.innerText = `${Math.floor(((minutesAgo/60)/24)/30)} months ago`;
+  } else if(minutesAgo < 1) {
     timestamp.innerText = `Now`;
   } else {
     timestamp.innerText = `${minutesAgo} minutes ago`;
-  }
+ }
   //creator
   const creator = document.createElement("a");
   creator.classList.add("creator");

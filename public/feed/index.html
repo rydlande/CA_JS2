@@ -107,9 +107,16 @@
             </form>
           </div>
           <div class="button-section-bottom">
-            <button class="btn btn-custom d-flex align-items-center justify-content-center">
-              <i class="bi bi-funnel"></i>
-            </button>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-funnel"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" id="filter-newest" href="#">Newest</a></li>
+                <li><a class="dropdown-item" id="filter-oldest" href="#">Oldest</a></li>
+                <li><a class="dropdown-item" id="filter-following" href="#">Following</a></li>
+              </ul>
+            </div>
           </div>
         </div>
     </div>
