@@ -1,8 +1,5 @@
 export default function renderProfile(data) {
-  console.log(data);
-
   //AVATAR
-  const containerAvatar = document.querySelector("#containerAvatar");
   const defaultAvatar = document.querySelector("#defaultAvatar");
   const profileAvatar = document.querySelector("#profileAvatar");
 
@@ -20,8 +17,7 @@ export default function renderProfile(data) {
   //USERNAME
   const containerName = document.querySelector("#containerName");
   containerName.innerHTML = `
-    <h1 class="p-4 text-secondary text-nowrap font-monospace">${name} 
-    <small class="text-muted font-normal identifier">(Me)</small></h1>`;
+    <h1 class="p-4 text-secondary text-nowrap font-monospace">${name}`;
 
   //COUNT
   const containerCount = document.querySelector("#containerCount");

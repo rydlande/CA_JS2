@@ -25,8 +25,6 @@ async function renderUsers() {
   document.title = `${author} | The Garden`;
   renderProfile(data);
   getPosts();
-  follow(data);
-  unfollow(data);
 }
 
 /* AUTHORS POSTS */
@@ -50,7 +48,6 @@ async function getPosts() {
     }
   );
   const usersPosts = await res.json();
-  console.log(usersPosts);
   const slicedPosts = usersPosts.slice(startIndex, startIndex + postsPerPage);
   slicedPosts.forEach((item) => {
     containerPosts.append(renderCard(item));
@@ -63,14 +60,14 @@ buttonMorePosts.addEventListener("click", () => {
 });
 
 /* FOLLOW/UNFOLLOW - method: PUT */
-import follow from "./modules/follow.mjs";
-import unfollow from "./modules/unfollow.mjs";
-const name = localStorage.getItem("name");
+import { follow } from "./modules/follow.mjs";
+import { unfollow } from "./modules/unfollow.mjs";
+const username = localStorage.getItem("name");
 const buttonFUF = document.querySelector("#buttonFUF");
 
 async function getProfile() {
   const res = await fetch(
-    url + name + "?_followers=true&_following=true&_posts=true",
+    url + username + "?_followers=true&_following=true&_posts=true",
     {
       method: "GET",
       headers: {
@@ -82,17 +79,22 @@ async function getProfile() {
   const myData = await res.json();
   const myFollowings = myData.following;
   console.log(myFollowings);
+  myFollowings.forEach(({ name }) => {
+    const item = { name };
+    console.log(item.name);
+    console.log(author);
+
+    buttonFUF.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (author != item.name) {
+        follow();
+      } else {
+        unfollow();
+      }
+      location.reload();
+    });
+  });
 }
-/* 
-buttonFUF.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (author != myFollowing) {
-    follow(data);
-  } else {
-    unfollow(data);
-  }
-  location.reload();
-});
- */
 getProfile();
+
 renderUsers();
