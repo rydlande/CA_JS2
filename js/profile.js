@@ -1,5 +1,7 @@
 /* PROFILE INFO */
 import renderProfile from "./modules/renderAuthors.mjs";
+import { follow } from "./modules/follow.mjs";
+import { unfollow } from "./modules/unfollow.mjs";
 
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const token = localStorage.getItem("token");
@@ -60,8 +62,6 @@ buttonMorePosts.addEventListener("click", () => {
 });
 
 /* FOLLOW/UNFOLLOW - method: PUT */
-import { follow } from "./modules/follow.mjs";
-import { unfollow } from "./modules/unfollow.mjs";
 const username = localStorage.getItem("name");
 const buttonFUF = document.querySelector("#buttonFUF");
 
@@ -86,15 +86,18 @@ async function getProfile() {
 
     buttonFUF.addEventListener("click", (e) => {
       e.preventDefault();
-      if (author != item.name) {
+      if (author !== item.name) {
         follow();
+        buttonFUF.classList.add('btn-custom-follow-following');
+        buttonFUF.classList.remove('btn-custom-follow-not-following')
       } else {
         unfollow();
+        buttonFUF.classList.remove('btn-custom-follow-following');
+        buttonFUF.classList.add('btn-custom-follow-not-following')
       }
       location.reload();
     });
   });
 }
 getProfile();
-
 renderUsers();

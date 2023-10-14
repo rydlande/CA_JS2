@@ -82,14 +82,16 @@ export default function renderCard(data) {
 
   if (username === author.name) {
     options.innerHTML = `
-    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="dropdown">
+      <button class="btn btn-secondary" type="button" id="dropdownMenuButton" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-three-dots-vertical"></i>
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-    </div>`;
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+   </div>`;
   }
 
   cardBottom.append(reactionsShow, commentsShow, options);

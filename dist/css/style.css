@@ -11907,6 +11907,12 @@ textarea.form-control-lg {
   background-color: #ffffff;
   cursor: pointer;
 }
+.btn-custom-follow-following {
+  background-color: #0D3B66;
+}
+.btn-custom-follow-not-following {
+  background-color: #F95738;
+}
 .btn-custom-new-post {
   background-color: #F95738;
   color: white;
@@ -12218,6 +12224,24 @@ span {
   justify-content: center;
   gap: 1rem;
   max-width: 950px;
+}
+
+.dropdown {
+  margin-left: auto;
+}
+
+#dropdownMenuButton {
+  background-color: white;
+  border: 1px solid white;
+  color: black;
+}
+
+#dropdownMenuButton:hover, #dropdownMenuButton:active, #dropdownMenuButton:focus {
+  border: 1px solid rgb(73, 73, 73);
+}
+
+#dropdownMenuButton i {
+  color: black;
 }
 
 .main__feed {
@@ -12584,6 +12608,10 @@ span {
   color: black;
   text-decoration: none;
   font-size: 1.2rem;
+}
+
+.creator-single:hover {
+  color: #F95738;
 }
 
 .comment-header {

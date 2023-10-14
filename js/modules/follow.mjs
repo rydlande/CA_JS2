@@ -19,7 +19,7 @@ async function renderUser() {
   );
   const data = await res.json();
   console.log(data);
-  follow(data);
+  follow(data)
 }
 renderUser();
 

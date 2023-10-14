@@ -7,7 +7,7 @@ let startIndex = 0;
 import renderCard from './modules/renderCard.mjs';
 import checkForErrors from './modules/checkForErrors.mjs'
 
-async function getPosts(){
+async function getPosts(url){
     let token = localStorage.getItem('token');
     const res = await fetch(url, {
         method: "GET",
@@ -17,18 +17,26 @@ async function getPosts(){
           },
     })
     const data = await res.json()
-    checkForErrors(data)
-    console.log(data)
-    let slicedData = data.slice(startIndex, startIndex + postsPerPage);
+    const newData = filterPosts(data)
+    checkForErrors(newData)
+    console.log(newData)
+    let slicedData = newData.slice(startIndex, startIndex + postsPerPage);
     slicedData.forEach(item => {
         root.append(renderCard(item))
     });
 }
 addEventListener('DOMContentLoaded', () => {
-    getPosts()
+    getPosts(url)
 })
 
 buttonMorePosts.addEventListener("click", () => {
     startIndex += postsPerPage;
-    getPosts();
+    getPosts(url);
   });
+
+function filterPosts(data){
+    let filteredArray  = data.filter(post => post.title !== "");
+    return filteredArray
+}
+
+
