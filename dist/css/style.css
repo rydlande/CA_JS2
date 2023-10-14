@@ -12483,7 +12483,9 @@ span {
 }
 
 .creatorImageContainer {
-  background-color: #F95738;
+  background-image: url("../../media/Group 3placeholder.svg");
+  background-position: center;
+  background-size: cover;
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -12702,6 +12704,9 @@ span {
   #root-posts {
     width: 95%;
   }
+  .modalCreatePost {
+    width: 95% !important;
+  }
   .button-section {
     width: 95%;
   }
@@ -12719,6 +12724,17 @@ span {
 }
 .no-text-body, .no-text-title {
   color: rgba(91, 91, 91, 0.326);
+}
+
+.modalCreatePost {
+  width: 75%;
+}
+
+.profile-posts {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 3rem;
 }
 
 /*# sourceMappingURL=style.css.map */
