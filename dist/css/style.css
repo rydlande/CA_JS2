@@ -11964,9 +11964,9 @@ textarea.form-control-lg {
 .btn-custom-buttonMorePosts {
   margin: 2rem;
   background-color: white;
-  color: #0D3B66;
+  color: #F95738;
   width: 7rem;
-  border: 2px solid #0D3B66;
+  border: 2px solid #F95738;
   box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
 .btn-custom-buttonMorePosts:hover {
@@ -12210,6 +12210,20 @@ span {
 #desktop-logo {
   display: none;
   min-width: 200px;
+}
+
+.button-section {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 950px;
+}
+
+.main__feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button-section-container {
@@ -12658,6 +12672,9 @@ span {
 
 @media only screen and (max-width: 500px) {
   #root-posts {
+    width: 95%;
+  }
+  .button-section {
     width: 95%;
   }
   .comment-header {
