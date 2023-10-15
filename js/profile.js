@@ -54,12 +54,24 @@ async function getPosts() {
   slicedPosts.forEach((item) => {
     containerPosts.append(renderCard(item));
   });
+  if (usersPosts.length <= startIndex + postsPerPage) {
+    buttonMorePosts.style.display = "none";
+  } else {
+    buttonMorePosts.style.display = "flex";
+  }
+  buttonMorePosts.addEventListener("click", () => {
+    startIndex += postsPerPage;
+    const nextSlice = usersPosts.slice(startIndex, startIndex + postsPerPage);
+    nextSlice.forEach((item) => {
+      containerPosts.append(renderCard(item));
+    });
+    if (usersPosts.length <= startIndex + postsPerPage) {
+      buttonMorePosts.style.display = "none";
+    }
+  });
 }
+buttonMorePosts.style.display = "none";
 
-buttonMorePosts.addEventListener("click", () => {
-  startIndex += postsPerPage;
-  getPosts();
-});
 
 /* FOLLOW/UNFOLLOW - method: PUT */
 const username = localStorage.getItem("name");

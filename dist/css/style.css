@@ -12283,10 +12283,19 @@ span {
 }
 
 #search-input-button {
+  border-radius: 0px 5px 5px 0px;
   transition: 0.3s;
 }
 #search-input-button:hover {
   background-color: #e4e2e2;
+}
+#search-input-button:active {
+  background-color: #0D3B66;
+  color: white;
+}
+
+#search-input {
+  border-radius: 5px 0px 0px 5px;
 }
 
 #cta-textarea {

@@ -365,10 +365,18 @@ align-items: center;
     }
 }
 #search-input-button {
+    border-radius: 0px 5px 5px 0px;
     transition: 0.3s;
     &:hover{
         background-color: #e4e2e2;
     }
+    &:active {
+        background-color: $secondary;
+        color: $tertiary;
+    }
+}
+#search-input {
+    border-radius: 5px 0px 0px 5px;
 }
 #cta-textarea {
 border: 1px solid var(--bs-border-color);
