@@ -108,7 +108,6 @@ export default function renderProfile(data) {
     modal.style.display = "flex";
     modal.style.position = "fixed"; 
   }
-
   const mediaeditBtn = document.querySelector("#mediaeditBtn");
   mediaeditBtn.addEventListener("click", () => {
     openModal();

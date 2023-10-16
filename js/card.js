@@ -1,6 +1,5 @@
 const root = document.getElementById("root-posts");
-const url =
-  "https://api.noroff.dev/api/v1/social/posts?_author=true&_reactions=true&_comments=true";
+const url = "https://api.noroff.dev/api/v1/social/posts?_author=true&_reactions=true&_comments=true";
 const buttonMorePosts = document.querySelector("#buttonMorePosts");
 let postsPerPage = 10;
 let startIndex = 0;
@@ -70,11 +69,6 @@ filterFollowing.addEventListener("click", () => {
   );
 });
 
-/**
- * Filters an array of post objects by removing any posts with empty titles or bodies.
- * @param {Array} data - The array of post objects to filter.
- * @returns {Array} - The filtered array of post objects.
- */
 
 /* SEARCH */
 const searchInput = document.querySelector("#search-input");
@@ -95,6 +89,7 @@ searchButton.addEventListener("click", (e) => {
       }
     );
     const data = await res.json();
+    console.log(data)
     checkForErrors(data);
     filterSearch(data);
   }
@@ -102,18 +97,15 @@ searchButton.addEventListener("click", (e) => {
 });
 function filterSearch(data) {
   let filteredArray = [];
+  let searchValue = searchInput.value;
   let filterTitle = data.filter((post) =>
-    post.title.toLowerCase().includes(searchInput.value.toLowerCase())
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
   let filterBody = data.filter((post) =>
-    post.body.toLowerCase().includes(searchInput.value.toLowerCase())
-  );
+  (post.body ? post.body.toLowerCase() : '').includes(searchValue.toLowerCase())
+);
   let filterTag = data.filter((post) =>
-    post.tags.forEach((item) => {
-      if (item.toLowerCase().includes(searchInput.value.toLowerCase())) {
-        return post;
-      }
-    })
+  post.tags.some((item) => (item ? item.toLowerCase().includes(searchValue.toLowerCase()) : false))
   );
   filterTitle.forEach((item) => {
     filteredArray.push(item);
@@ -124,12 +116,13 @@ function filterSearch(data) {
   filterTag.forEach((item) => {
     filteredArray.push(item);
   });
+  console.log(filteredArray);
   const uniqueArray = filteredArray.filter((item, index, self) => {
     return index === self.findIndex((t) => t.id === item.id);
   });
   let slicedData = uniqueArray.slice(startIndex, startIndex + postsPerPage);
-  buttonMorePosts.style.display =
-    uniqueArray.length > startIndex + postsPerPage ? "flex" : "none";
+  console.log(slicedData)
+  buttonMorePosts.style.display = uniqueArray.length > startIndex + postsPerPage ? "flex" : "none";
   buttonMorePosts.addEventListener("click", () => {
     let slicedData = uniqueArray.slice(startIndex, startIndex + postsPerPage);
     startIndex += postsPerPage;
