@@ -1,5 +1,6 @@
 /* PROFILE INFO */
 import renderProfile from "./modules/renderMyProfile.mjs";
+import { editAndDelete } from "./modules/edit.mjs";
 
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const token = localStorage.getItem("token");
@@ -20,6 +21,7 @@ async function getProfile() {
   document.title = `My profile (@${name}) | The Garden`;
   renderProfile(data);
   getPosts();
+  editAndDelete();
 }
 getProfile();
 

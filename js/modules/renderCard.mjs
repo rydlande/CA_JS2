@@ -154,6 +154,7 @@ export default function renderCard(data) {
   reactionsShow.appendChild(reactionContainer);
   // edit & delete
   const options = document.createElement("div");
+  options.setAttribute("id", "options");
 
   if (username === author.name) {
     options.innerHTML = `
@@ -162,8 +163,10 @@ export default function renderCard(data) {
       <i class="bi bi-three-dots-vertical"></i>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#" id="editPost" data-post-id="${id}>Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#" id="editPost" data-post-id="${id}>Edit</a></li>
+        <li><a class="dropdown-item" href="#" id="editPost" data-post-id="${id}">Edit</a></li>
+        <li><a class="dropdown-item" href="#" id="deletePost" data-post-id="${id}">Delete</a></li>
+
       </ul>
    </div>`;
   }

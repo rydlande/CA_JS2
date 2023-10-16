@@ -214,7 +214,23 @@
       </section>
 
       <section class="section-posts mt-5">
-        <div class="px-3" id="root-posts"></div>
+        <div class="px-3" id="root-posts">
+          <div id="editPostModal" class="modal">
+            <div class="modal-content">
+              <span id="closeEditPostButton" class="close">&times;</span>
+              <h2>Edit Post</h2>
+              <label for="editTitleInput">Title:</label>
+              <input type="text" id="editTitleInput" name="editTitleInput" placeholder="Edit post title">
+              <label for="editBodyInput">Body:</label>
+              <textarea id="editBodyInput" name="editBodyInput" placeholder="Edit post body"></textarea>
+              <label for="editTagsInput">Tags:</label>
+              <input type="text" id="editTagsInput" name="editTagsInput" placeholder="Edit tags separated by spaces">
+              <label for="editMediaInput">Media URL:</label>
+              <input type="text" id="editMediaInput" name="editMediaInput" placeholder="Edit media URL">
+              <button id="saveEditPostButton">Save Post</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <button
