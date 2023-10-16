@@ -1,6 +1,7 @@
 export default function renderProfile(data) {
   //AVATAR
   const defaultAvatar = document.querySelector("#defaultAvatar");
+  const profileBanner = document.querySelector("#profileBanner");
   const profileAvatar = document.querySelector("#profileAvatar");
 
   const { name, banner, avatar } = data;
@@ -13,6 +14,19 @@ export default function renderProfile(data) {
     profileAvatar.innerHTML = `
       <img class=" profile-image-element rounded-circle" src="${avatar}">`;
   }
+  const profileBannerContainer = document.createElement("div");
+  profileBannerContainer.classList.add("profile-banner-container");
+  const profileBannerElement = document.createElement("img");
+  profileBannerElement.classList.add("profile-banner-element");
+  if (!banner) {
+    console.log("no banner")
+    profileBannerElement.src = "../../media/banner.png";
+  } else {
+    console.log("banner")
+    profileBannerElement.src = banner;
+  }
+  profileBannerContainer.append(profileBannerElement);
+  profileBanner.append(profileBannerContainer);
 
   //USERNAME
   const containerName = document.querySelector("#containerName");

@@ -247,7 +247,7 @@ h3 {
     }
 } 
 .circle-container {
-    width: fit-content
+    width: fit-content;
  }
 form {
     max-width: 300px
@@ -565,7 +565,7 @@ text-decoration: none;
     color: $complimentary;
 }
 .creatorImageContainer {
-    background-image: url('../../media/Group\ 3placeholder.svg');
+    background-image: url('../../media/bruker2.png');
     background-position: center;
     background-size: cover;
     width: 30px;
@@ -906,3 +906,87 @@ gap: 3rem;
         justify-content: center;
     }
 }
+#profileBanner {
+    position: absolute;
+    height: 16rem;
+    width: 95%;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: -1;
+}
+.profile-banner-element {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: 1px solid rgb(225, 225, 225);
+
+}
+.profile-banner-container {
+    width: 100%;
+    height: 100%;
+}
+#mediaeditBtn {
+    position: absolute;
+    right: 2%;
+    background-color: transparent;
+    margin-top: 1px;
+    border: none;
+    color: $tertiary;
+}
+.editMedia-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+  }
+
+.editMedia-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: fit-content;    
+    max-width: 500px;
+    border-radius: 5px;
+  }
+  .editMedia-modal-content label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+    .editMedia-modal-content input {
+        margin: 0.5rem 0;
+        max-width: 500px;
+    }
+ .editMedia-modal button {
+    align-self: flex-end;
+ }
+ .editMedia-modal h4 {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+ }
+  .close {
+    color: #aaa;
+    margin-left: auto;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
