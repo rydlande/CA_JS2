@@ -1,7 +1,7 @@
 /* PROFILE INFO */
 import renderProfile from "./modules/renderAuthors.mjs";
-import { follow } from "./modules/follow.mjs";
-import { unfollow } from "./modules/unfollow.mjs";
+// import { follow, unfollow } from "./modules/follow.mjs";
+// import { unfollow } from "./modules/unfollow.mjs";
 
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const token = localStorage.getItem("token");
@@ -72,10 +72,13 @@ async function getPosts() {
 }
 buttonMorePosts.style.display = "none";
 
-
 /* FOLLOW/UNFOLLOW - method: PUT */
+
+renderUsers();
+/* const buttonFUF = document.querySelector("#buttonFUF");
 const username = localStorage.getItem("name");
-const buttonFUF = document.querySelector("#buttonFUF");
+follow(); */
+/* let following;
 
 async function getProfile() {
   const res = await fetch(
@@ -90,26 +93,57 @@ async function getProfile() {
   );
   const myData = await res.json();
   const myFollowings = myData.following;
-  console.log(myFollowings);
   myFollowings.forEach(({ name }) => {
-    const item = { name };
-    console.log(item.name);
-    console.log(author);
-
-    buttonFUF.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (author !== item.name) {
-        follow();
-        buttonFUF.classList.add('btn-custom-follow-following');
-        buttonFUF.classList.remove('btn-custom-follow-not-following')
-      } else {
-        unfollow();
-        buttonFUF.classList.remove('btn-custom-follow-following');
-        buttonFUF.classList.add('btn-custom-follow-not-following')
-      }
-      location.reload();
-    });
+    following = name;
   });
 }
-getProfile();
-renderUsers();
+
+buttonFUF.addEventListener("click", async (e) => {
+  e.preventDefault();
+  await getProfile();
+  console.log(following);
+  console.log(author);
+  if (author !== following) {
+    follow();
+  } else {
+    unfollow();
+  }
+  location.reload();
+}); */
+
+/* const username = localStorage.getItem("name");
+const buttonFUF = document.querySelector("#buttonFUF");
+let myData;
+
+async function getProfile() {
+  const res = await fetch(
+    url + username + "?_followers=true&_following=true&_posts=true",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  myData = await res.json(); */
+/*   const myFollowings = myData.following;
+  console.log(myFollowings); */
+/* } */
+
+/* buttonFUF.addEventListener("click", async () => {
+  const myFollowings = myData.following;
+  console.log(myFollowings);
+  myFollowings.forEach(({ name }) => {
+    if (author !== name) {
+      follow();
+      buttonFUF.classList.add("btn-custom-follow-following");
+      buttonFUF.classList.remove("btn-custom-follow-not-following");
+    } else {
+      unfollow();
+      buttonFUF.classList.remove("btn-custom-follow-following");
+      buttonFUF.classList.add("btn-custom-follow-not-following");
+    }
+  });
+  location.reload();
+}); */
