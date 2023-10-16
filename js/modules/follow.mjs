@@ -32,13 +32,13 @@ async function renderUserFUF() {
 }
 renderUserFUF();
 
-buttonFUF.addEventListener("click", () => {
+buttonFUF.addEventListener("click", async () => {
   if (author === name) {
-    unfollow();
+    await unfollow();
     buttonFUF.classList.remove("btn-custom-follow-following");
     buttonFUF.classList.add("btn-custom-follow-not-following");
   } else {
-    follow();
+    await follow();
     buttonFUF.classList.add("btn-custom-follow-following");
     buttonFUF.classList.remove("btn-custom-follow-not-following");
   }
