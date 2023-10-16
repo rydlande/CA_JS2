@@ -9,7 +9,6 @@ export default function renderCard(data) {
   card.classList.add("card");
 
   let { title, body, id, media, author, comments, reactions } = data;
-  console.log(author.name);
 
   /* post author and timestamp */
   const cardContent = document.createElement("a");
@@ -299,7 +298,6 @@ export default function renderCard(data) {
     deleteLink.addEventListener("click", (e) => {
       const postId = e.target.getAttribute("data-post-id");
       deletePost(postId);
-      deleteLink.remove();
     });
     editPostCloseButton.addEventListener("click", () => {
       editPostModal.style.display = "none";

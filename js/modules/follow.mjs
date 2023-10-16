@@ -1,8 +1,6 @@
 const urlFUF = "https://api.noroff.dev/api/v1/social/profiles/";
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const token = localStorage.getItem("token");
-const username = localStorage.getItem("name");
-console.log(username);
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
