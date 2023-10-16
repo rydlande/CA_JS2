@@ -1,6 +1,8 @@
 const username = localStorage.getItem("name");
+const token = localStorage.getItem("accessToken");
 import { putReaction } from "./putReaction.js";
-console.log(username);
+import editPost from "./putPost.mjs";
+import deletePost from "./deletePost.mjs";
 
 export default function renderCard(data) {
   const card = document.createElement("div");
@@ -213,14 +215,14 @@ export default function renderCard(data) {
   editMediaInput.type = "text";
   editMediaInput.id = "editMediaInput";
 
-  /* const labelTags = document.createElement("label");
+  const labelTags = document.createElement("label");
   labelTags.textContent =
     "Add tags so others can find your post. Edit tags separated by spaces";
   labelTags.setAttribute("for", "editTagsInput");
   const editTagsInput = document.createElement("input");
   editTagsInput.classList.add("form-control");
   editTagsInput.type = "text";
-  editTagsInput.id = "editTagsInput"; */
+  editTagsInput.id = "editTagsInput";
 
   editPostBody.append(
     labelTitle,
@@ -228,9 +230,9 @@ export default function renderCard(data) {
     labelBody,
     editBodyInput,
     labelMedia,
-    editMediaInput
-    /*   labelTags,
-    editTagsInput */
+    editMediaInput,
+    labelTags,
+    editTagsInput
   );
 
   const editPostFooter = document.createElement("div");
@@ -288,20 +290,32 @@ export default function renderCard(data) {
     deleteLink.textContent = "Delete";
     deleteItem.appendChild(deleteLink);
 
-    editLink.addEventListener("click", () => {
-      editTitleInput.value = title;
-      editBodyInput.value = body;
-      editMediaInput.value = media;
-      // editTagsInput.value = tags;
+    editLink.addEventListener("click", (e) => {
+      const postId = e.target.getAttribute("data-post-id");
+      editPostModal.dataset.id = postId;
       editPostModal.classList.add("show");
       editPostModal.style.display = "block";
     });
+    deleteLink.addEventListener("click", (e) => {
+      const postId = e.target.getAttribute("data-post-id");
+      deletePost(postId);
+      deleteLink.remove();
+    });
+    editPostCloseButton.addEventListener("click", () => {
+      editPostModal.style.display = "none";
+    });
+    saveEditPostButton.addEventListener("click", (e) => {
+      const postId = e.target.getAttribute("data-post-id");
+      editPostModal.dataset.id = postId;
 
-    // Add event listener for the "Delete" option
-    deleteLink.addEventListener("click", () => {
-      // Perform the delete action here
-      // You may want to display a confirmation dialog or send a request to delete the post
-      // Example: confirmDelete(id);
+      const updatedPostData = {
+        title: editTitleInput.value,
+        body: editBodyInput.value,
+        media: editMediaInput.value,
+        tags: editTagsInput.value.split(" "),
+      };
+      editPost(id, updatedPostData);
+      editPostModal.style.display = "none";
     });
 
     dropdownMenu.append(editItem, deleteItem);
