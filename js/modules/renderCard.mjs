@@ -299,7 +299,6 @@ export default function renderCard(data) {
     deleteLink.addEventListener("click", (e) => {
       const postId = e.target.getAttribute("data-post-id");
       deletePost(postId);
-      deleteLink.remove();
     });
     editPostCloseButton.addEventListener("click", () => {
       editPostModal.style.display = "none";
