@@ -796,6 +796,9 @@ height: 100%;
     padding: 0.5rem;
 }
 @media only screen and (min-width: 992px) {
+    .cardContent-single {
+        max-height: 1000px;
+    }
 #root-single-post{
     width: 100%;
     min-height: 80vh;
@@ -906,7 +909,4 @@ gap: 3rem;
         align-self: center;
         justify-content: center;
     }
-}
-.cardContent-single {
-    max-width: 500px;
 }

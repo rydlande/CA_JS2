@@ -17,6 +17,10 @@
         }, false)
       })
   })()
+const logOut = document.getElementById('logout');
+logOut.addEventListener('click', (e) => {
+  localStorage.removeItem('token');
+})
 
 const searchForm = document.getElementById('search-form');
 searchForm.addEventListener('submit', (e) => {
