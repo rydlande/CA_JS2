@@ -2,7 +2,7 @@ import renderCard from "./modules/renderCard.mjs";
 renderCard();
 
 /* edit */
-export default function editDeletePost() {
+export function editDeletePost() {
   const options = querySelector("#options");
   options.querySelector("#editPostModal").addEventListener("click", (e) => {
     const editPostModal = document.querySelector("#editPostModal");
