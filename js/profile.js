@@ -7,7 +7,6 @@ const token = localStorage.getItem("token");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const author = params.get("author");
-console.log(author);
 
 async function renderUsers() {
   const res = await fetch(
@@ -21,7 +20,6 @@ async function renderUsers() {
     }
   );
   const data = await res.json();
-  console.log(data);
   document.title = `${author} | The Garden`;
   renderProfile(data);
   getPosts();
