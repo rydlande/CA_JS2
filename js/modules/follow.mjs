@@ -10,6 +10,8 @@ const author = params.get("author");
 
 const buttonFUF = document.querySelector("#buttonFUF");
 
+let followers;
+
 async function renderUserFUF() {
   const res = await fetch(
     url + author + "?_followers=true&_following=true&_posts=true",
@@ -26,19 +28,19 @@ async function renderUserFUF() {
   console.log(data);
   usersFollowers.forEach(({ name }) => {
     console.log(name);
-    let followers = name;
+    followers = name;
   });
   /*   await follow(usersFollowers);
   await unfollow(usersFollowers); */
 
-  buttonFUF.addEventListener("click", async () => {
+  buttonFUF.addEventListener("click", () => {
     console.log(usersFollowers);
-    if (author === usersFollowers) {
-      await unfollow();
+    if (author === followers) {
+      unfollow();
       buttonFUF.classList.remove("btn-custom-follow-following");
       buttonFUF.classList.add("btn-custom-follow-not-following");
     } else {
-      await follow();
+      follow();
       buttonFUF.classList.add("btn-custom-follow-following");
       buttonFUF.classList.remove("btn-custom-follow-not-following");
     }
