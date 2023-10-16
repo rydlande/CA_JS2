@@ -50,10 +50,6 @@ addEventListener('DOMContentLoaded', () => {
     getPosts(url)
 })
 
-/* buttonMorePosts.addEventListener("click", () => {
-    startIndex += postsPerPage;
-    getPosts(url);
-  }); */
 
 
 /* FILTER */
@@ -77,17 +73,9 @@ filterFollowing.addEventListener('click', () => {
  * @returns {Array} - The filtered array of post objects.
  */
 
-function filterPosts(data){
-    let filter1  = data.filter(post => post.title !== "");
-    let filter2 = filter1.filter(post => post.body !== "");
-    return filter2
-}
-
 /* SEARCH */
 const searchInput = document.querySelector('#search-input');
 const searchButton = document.querySelector('#search-input-button');
-
-
 searchButton.addEventListener('click', (e) => {
     e.preventDefault();
 async function searchPosts(){
