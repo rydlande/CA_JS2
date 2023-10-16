@@ -1,6 +1,5 @@
 /* PROFILE INFO */
 import renderProfile from "./modules/renderMyProfile.mjs";
-// import { editDeletePost } from "./modules/edit.mjs";
 
 const url = "https://api.noroff.dev/api/v1/social/profiles/";
 const token = localStorage.getItem("token");
@@ -21,7 +20,6 @@ async function getProfile() {
   document.title = `My profile (@${name}) | The Garden`;
   renderProfile(data);
   getPosts();
-  // editDeletePost();
 }
 getProfile();
 
@@ -46,7 +44,6 @@ async function getPosts() {
     }
   );
   const usersPosts = await res.json();
-  console.log(usersPosts);
   const slicedPosts = usersPosts.slice(startIndex, startIndex + postsPerPage);
   slicedPosts.forEach((item) => {
     containerPosts.append(renderCard(item));
@@ -74,5 +71,3 @@ buttonPostNewPost.addEventListener("click", (e) => {
     createPost();
   }
 });
-
-/* UPDATE PROFILE - method: PUT */

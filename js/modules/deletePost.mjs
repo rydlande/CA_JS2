@@ -9,7 +9,7 @@ export default async function deletePost(postId) {
     },
   });
   const resData = await res.json();
-  if (resData.ok) {
-    console.log("Post deleted");
+  if (res.ok) {
+    window.location.reload();
   }
 }
