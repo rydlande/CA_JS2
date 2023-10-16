@@ -1,5 +1,7 @@
 import comment from './comment.mjs';
 import postComment from './postComment.mjs';
+import {putReaction} from './putReaction.js';
+
 export default function renderCard(data) {
   const url = `https://api.noroff.dev/api/v1/social/posts/${data.id}/comment`;
   let { title, body, media, comments, reactions } = data;
@@ -78,11 +80,75 @@ export default function renderCard(data) {
     commentPostContainer.append(commentInput, commentButton);
     commentsShow.append(commentPostContainer);
     const reactionsShow = document.createElement("div");
-    reactionsShow.innerText = `${data._count.reactions} reactions`;
     reactionsShow.classList.add("reactions");
-    comment(data, commentsShow)
-    cardBottom.append(reactionsShow, commentsShow);
-    card.append(cardTop, cardContent, cardBottom);
+    comment(data, commentsShow);
+    
+    const reactionContainer = document.createElement("div");
+    reactions.forEach(item => {
+      const reaction = document.createElement("div");
+      reaction.classList.add("reaction-item");
+    
+      const reactionSymbol = document.createElement("p");
+      reactionSymbol.classList.add("reaction_symbol");
+      reactionSymbol.textContent = item.symbol;
+    
+      const reactionCount = document.createElement("p");
+      reactionCount.classList.add("reaction_count");
+      reactionCount.textContent = item.count;
+    
+      reaction.appendChild(reactionSymbol);
+      reaction.appendChild(reactionCount);
+      reaction.classList.add("reaction_container");
+      reactionContainer.appendChild(reaction);
+    });
+    
+    const react = document.createElement("dropdown-container");
+    const dropdownReact = document.createElement("div");
+    dropdownReact.classList.add("dropdown-react");
+    
+    const dropdownToggle = document.createElement("a");
+    dropdownToggle.classList.add("btn");
+    dropdownToggle.classList.add("btn-secondary");
+    dropdownToggle.classList.add("e-caret-hide");
+    dropdownToggle.classList.add("button-dropdown-react");
+    dropdownToggle.href = "#";
+    dropdownToggle.role = "button";
+    dropdownToggle.setAttribute("data-bs-toggle", "dropdown");
+    dropdownToggle.setAttribute("aria-expanded", "false");
+    
+    const plusIcon = document.createElement("i");
+    plusIcon.classList.add("bi");
+    plusIcon.classList.add("bi-plus-lg");
+    
+    dropdownToggle.appendChild(plusIcon);
+    dropdownReact.appendChild(dropdownToggle);
+    
+    const dropdownMenu = document.createElement("ul");
+    dropdownMenu.classList.add("dropdown-menu");
+    dropdownMenu.classList.add("react-ul");
+    
+    const reactionsList = ["❤️", "👌", "👍", "🤩", "😎", "😂", "😍", "😀", "😆", "👽", "👻", "👹"];
+    reactionsList.forEach(reaction => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("react-element");
+      listItem.id = reaction;
+      listItem.textContent = reaction;
+      listItem.addEventListener("click", () => {
+        putReaction(data.id, reaction);
+      });
+      dropdownMenu.appendChild(listItem);
+    });
+    
+    dropdownReact.appendChild(dropdownMenu);
+    react.appendChild(dropdownReact);
+    
+    reactionContainer.appendChild(react);
+    reactionsShow.appendChild(reactionContainer);
+    
+    cardBottom.appendChild(reactionsShow);
+    cardBottom.appendChild(commentsShow);
+    card.appendChild(cardTop);
+    card.appendChild(cardContent);
+    card.appendChild(cardBottom);
     return card;
   }
-

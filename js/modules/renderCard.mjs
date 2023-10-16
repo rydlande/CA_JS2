@@ -1,4 +1,5 @@
 const username = localStorage.getItem("name");
+import { putReaction } from "./putReaction.js";
 console.log(username);
 
 export default function renderCard(data) {
@@ -77,12 +78,69 @@ if(minutesAgo > 59 && minutesAgo < 1440) {
   commentsShow.classList.add("comments");
   //reactions
   const reactionsShow = document.createElement("a");
-  reactionsShow.href = `../../public/posts/?id=${id}`;
-  reactionsShow.innerText = `${data._count.reactions} reactions`;
   reactionsShow.classList.add("reactions");
+  const reactionContainer = document.createElement("div");
+    reactions.forEach(item => {
+      const reaction = document.createElement("div");
+      reaction.classList.add("reaction-item");
+    
+      const reactionSymbol = document.createElement("p");
+      reactionSymbol.classList.add("reaction_symbol");
+      reactionSymbol.textContent = item.symbol;
+    
+      const reactionCount = document.createElement("p");
+      reactionCount.classList.add("reaction_count");
+      reactionCount.textContent = item.count;
+      reaction.appendChild(reactionSymbol);
+      reaction.appendChild(reactionCount);
+      reaction.classList.add("reaction_container");
+      reactionContainer.appendChild(reaction);
+    });
+    
+    const react = document.createElement("dropdown-container");
+    const dropdownReact = document.createElement("div");
+    dropdownReact.classList.add("dropdown-react");
+    
+    const dropdownToggle = document.createElement("a");
+    dropdownToggle.classList.add("btn");
+    dropdownToggle.classList.add("btn-secondary");
+    dropdownToggle.classList.add("e-caret-hide");
+    dropdownToggle.classList.add("button-dropdown-react");
+    dropdownToggle.href = "#";
+    dropdownToggle.role = "button";
+    dropdownToggle.setAttribute("data-bs-toggle", "dropdown");
+    dropdownToggle.setAttribute("aria-expanded", "false");
+    
+    const plusIcon = document.createElement("i");
+    plusIcon.classList.add("bi");
+    plusIcon.classList.add("bi-plus-lg");
+    
+    dropdownToggle.appendChild(plusIcon);
+    dropdownReact.appendChild(dropdownToggle);
+    
+    const dropdownMenu = document.createElement("ul");
+    dropdownMenu.classList.add("dropdown-menu");
+    dropdownMenu.classList.add("react-ul");
+    
+    const reactionsList = ["❤️", "👌", "👍", "🤩", "😎", "😂", "😍", "😀", "😆", "👽", "👻", "👹"];
+    reactionsList.forEach(reaction => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("react-element");
+      listItem.id = reaction;
+      listItem.textContent = reaction;
+      listItem.addEventListener("click", () => {
+        putReaction(data.id, reaction);
+      });
+      dropdownMenu.appendChild(listItem);
+    });
+    
+    dropdownReact.appendChild(dropdownMenu);
+    react.appendChild(dropdownReact);
+    
+    reactionContainer.appendChild(react);
+    reactionsShow.appendChild(reactionContainer);
   // edit & delete
   const options = document.createElement("div");
-  options.classList.add("dropdown");
 
   if (username === author.name) {
     options.innerHTML = `

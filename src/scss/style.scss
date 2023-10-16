@@ -322,6 +322,9 @@ background-color: $tertiary;
 border: 1px solid $tertiary;
 color: black;
 }
+.dropdown-menu.show li {
+    width: 100%;
+}
 
 #dropdownMenuButton:hover, #dropdownMenuButton:active, #dropdownMenuButton:focus {
     border: 1px solid rgb(73, 73, 73);
@@ -575,26 +578,114 @@ text-decoration: none;
     object-fit: cover;
     border-radius: 100%;;
 }
-.comments, .reactions {
+.comments {
     color: $complimentary;
     text-decoration: none;
+    padding-left: 0.5rem;
 }
 .comments-single, .reactions-single {
     color: $complimentary;
     text-decoration: none;
 }
 
-.comments:hover, .reactions:hover {
+.comments:hover{
     color: $secondary;
 }
-.comments {
-}
 .reactions {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 1rem;
+}
+.reactions div {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+.react-ul .show {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.react-ul {
+    margin-top: 2.3rem;
+    display: none;
+    flex-wrap: wrap !important;
+    max-width: 200px;
+}
+.dropdown-menu.show {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    max-width: 200px;
+}
+.react-ul li {
+    width: 40px !important;
+    padding: 0.5rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: center ;
+    margin-right: 0 !important;
+}
+.react-ul li:hover {
+    background-color: #e4e2e2;
+    cursor: pointer;
+}
+.button-dropdown-react {
+    background-color: $tertiary;
+    color: $complimentary;
+    border: none;
+}
+.button-dropdown-react:hover {
+    background-color: $complimentary;
+    color: $tertiary;
+}
+.button-dropdown-react:focus {
+    background-color: $tertiary;
+    color: $complimentary;
+}
+.button-dropdown-react:active {
+    background-color: $complimentary;
+    color: $tertiary;
+}
+.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+    background-color: $complimentary;
+    color: $tertiary;
+    border: 1px solid $complimentary;
+}
+.reaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0;
+    background-color: white;
+    padding: 0.3rem;
+    border-radius: 5px;
+    color: black;
+}
+.reaction-item:hover {
+    background-color: #e4e2e2;
+    cursor: pointer;
+}
+.reaction_symbol {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0;
+}
+.reaction_count {
+    margin-bottom: 0;
+}
+.reactions-clicked {
+    background-color: #e4e2e2;
+    color: white;
+}
+.react-ul {
+    gap: 0.5rem;
 }
 .cardBottom {
     display: flex;
     width: 100%;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 .modalContainer {
     position: absolute;
@@ -605,7 +696,7 @@ text-decoration: none;
        height: 100%;
        display: flex;
        flex-direction: column;
-       gap: 2rem;
+       gap: 1rem;
 }
 #root-single-post {
    display: flex;
@@ -640,7 +731,7 @@ text-decoration: none;
     flex-direction: column;
     width: 100%;
     gap: 1rem;
-    padding-top: 1rem;
+    padding-top: 0rem;
     padding: 1.3rem;
 }
 .comment-container{
@@ -666,7 +757,7 @@ text-decoration: none;
     align-items: center;
     margin:0;
     font-size: 1rem;
-    color: $secondary;
+    color: black;
 }
 .creator-single {
     min-width: fit-content;
@@ -778,7 +869,6 @@ height: 100%;
 }
 .cardTop-single {
     display: flex;
-    flex-direction: column;
 }
 .cardBottom-single {
     padding: 0;
@@ -795,4 +885,28 @@ display: flex;
 flex-direction: column-reverse;
 align-items: center;
 gap: 3rem;
+}
+@media only screen and (max-width: 400px) {
+.comment-post-container {
+    flex-direction: column;
+}
+}
+@media only screen and (max-width: 300px){
+    .cardTop-single {
+        flex-direction: column;
+}
+    .timestamp {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+}
+@media only screen and (max-width: 992px) {
+    .cardContent-single {
+        max-width: 500px;
+        align-self: center;
+        justify-content: center;
+    }
+}
+.cardContent-single {
+    max-width: 500px;
 }
