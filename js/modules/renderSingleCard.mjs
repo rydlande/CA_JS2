@@ -1,6 +1,32 @@
 import comment from './comment.mjs';
 import postComment from './postComment.mjs';
 import {putReaction} from './putReaction.js';
+/**
+ * Renders a single card element based on the provided data.
+ * @param {Object} data - The data object containing information about the card.
+ * @param {string} data.id - The ID of the card.
+ * @param {string} data.title - The title of the card.
+ * @param {string} data.body - The body text of the card.
+ * @param {string} data.media - The URL of the media associated with the card.
+ * @param {Object[]} data.comments - An array of comment objects associated with the card.
+ * @param {Object[]} data.reactions - An array of reaction objects associated with the card.
+ * @param {Object} data.author - An object containing information about the author of the card.
+ * @param {string} data.author.name - The name of the author.
+ * @param {string} data.author.avatar - The URL of the author's avatar image.
+ * @example renderCard({
+ *  id: "123",
+ * title: "Hello, world!",
+ * body: "This is a post about the world.",
+ * media: "https://example.com/image.png",
+ * comments: [],
+ * reactions: [],
+ * author: {
+ *  name: "John Doe",
+ * avatar: "https://example.com/avatar.png"
+ * }
+ * });
+ */
+
 
 export default function renderCard(data) {
   const url = `https://api.noroff.dev/api/v1/social/posts/${data.id}/comment`;
