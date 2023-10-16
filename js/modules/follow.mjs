@@ -26,24 +26,26 @@ async function renderUserFUF() {
   console.log(data);
   usersFollowers.forEach(({ name }) => {
     console.log(name);
+    let followers = name;
   });
-  await follow(usersFollowers);
-  await unfollow(usersFollowers);
+  /*   await follow(usersFollowers);
+  await unfollow(usersFollowers); */
+
+  buttonFUF.addEventListener("click", async () => {
+    console.log(usersFollowers);
+    if (author === usersFollowers) {
+      await unfollow();
+      buttonFUF.classList.remove("btn-custom-follow-following");
+      buttonFUF.classList.add("btn-custom-follow-not-following");
+    } else {
+      await follow();
+      buttonFUF.classList.add("btn-custom-follow-following");
+      buttonFUF.classList.remove("btn-custom-follow-not-following");
+    }
+    // window.location.reload();
+  });
 }
 renderUserFUF();
-
-buttonFUF.addEventListener("click", async () => {
-  if (author === name) {
-    await unfollow();
-    buttonFUF.classList.remove("btn-custom-follow-following");
-    buttonFUF.classList.add("btn-custom-follow-not-following");
-  } else {
-    await follow();
-    buttonFUF.classList.add("btn-custom-follow-following");
-    buttonFUF.classList.remove("btn-custom-follow-not-following");
-  }
-  window.location.reload();
-});
 
 async function follow(usersFollowers) {
   const res = await fetch(urlFUF + author + "/follow", {

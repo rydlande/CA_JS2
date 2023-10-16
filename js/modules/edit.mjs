@@ -1,5 +1,5 @@
-import renderCard from "./modules/renderCard.mjs";
-renderCard();
+import renderCard from "./renderCard.mjs";
+renderCard(data);
 
 /* edit */
 export function editDeletePost() {
