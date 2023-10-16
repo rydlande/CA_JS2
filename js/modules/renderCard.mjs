@@ -152,26 +152,165 @@ export default function renderCard(data) {
 
   reactionContainer.appendChild(react);
   reactionsShow.appendChild(reactionContainer);
+
   // edit & delete
+  // create modal
+  const editPostModal = document.createElement("div");
+  editPostModal.id = "editPostModal";
+  editPostModal.classList.add("modal", "fade");
+  editPostModal.setAttribute("data-bs-backdrop", "static");
+  editPostModal.setAttribute("data-bs-keyboard", "false");
+  editPostModal.tabIndex = -1;
+  editPostModal.setAttribute("aria-labelledby", "staticBackdropLabel");
+  editPostModal.setAttribute("aria-hidden", "true");
+
+  const editPostDialog = document.createElement("div");
+  editPostDialog.classList.add("modal-dialog");
+
+  const editPostContent = document.createElement("div");
+  editPostContent.classList.add("modal-content");
+
+  const editPostHeader = document.createElement("div");
+  editPostHeader.classList.add("modal-header");
+  const editPostTitle = document.createElement("h5");
+  editPostTitle.id = "staticBackdropLabel"; //editPostTitle ?
+  editPostTitle.textContent = "Edit post";
+
+  const editPostCloseButton = document.createElement("button");
+  editPostCloseButton.type = "button";
+  editPostCloseButton.classList.add("btn-close");
+  editPostCloseButton.setAttribute("data-bs-dismiss", "modal");
+  editPostCloseButton.setAttribute("aria-label", "close");
+
+  editPostHeader.append(editPostTitle, editPostCloseButton);
+
+  const editPostBody = document.createElement("div");
+  editPostBody.id = "modalBody";
+
+  const labelTitle = document.createElement("label");
+  labelTitle.textContent = "Title:";
+  labelTitle.setAttribute("for", "editTitleInput");
+  const editTitleInput = document.createElement("input");
+  editTitleInput.classList.add("form-control");
+  editTitleInput.type = "text";
+  editTitleInput.id = "editTitleInput";
+
+  const labelBody = document.createElement("label");
+  labelBody.textContent = "Body:";
+  labelBody.setAttribute("for", "editBodyInput");
+  const editBodyInput = document.createElement("textarea");
+  editBodyInput.classList.add("form-control");
+  editBodyInput.id = "editBodyInput";
+  editBodyInput.name = "";
+  editBodyInput.cols = 30;
+  editBodyInput.cols = 5;
+
+  const labelMedia = document.createElement("label");
+  labelMedia.textContent = "Image (url)";
+  labelMedia.setAttribute("for", "editMediaInput");
+  const editMediaInput = document.createElement("input");
+  editMediaInput.classList.add("form-control");
+  editMediaInput.type = "text";
+  editMediaInput.id = "editMediaInput";
+
+  /* const labelTags = document.createElement("label");
+  labelTags.textContent =
+    "Add tags so others can find your post. Edit tags separated by spaces";
+  labelTags.setAttribute("for", "editTagsInput");
+  const editTagsInput = document.createElement("input");
+  editTagsInput.classList.add("form-control");
+  editTagsInput.type = "text";
+  editTagsInput.id = "editTagsInput"; */
+
+  editPostBody.append(
+    labelTitle,
+    editTitleInput,
+    labelBody,
+    editBodyInput,
+    labelMedia,
+    editMediaInput
+    /*   labelTags,
+    editTagsInput */
+  );
+
+  const editPostFooter = document.createElement("div");
+  editPostFooter.classList.add("modal-footer");
+  const saveEditPostButton = document.createElement("button");
+  saveEditPostButton.type = "submit";
+  saveEditPostButton.classList.add("btn", "btn-secondary");
+  saveEditPostButton.id = "saveEditPostButton";
+  saveEditPostButton.textContent = "Save Post";
+
+  editPostFooter.append(saveEditPostButton);
+  editPostContent.append(editPostHeader, editPostBody, editPostFooter);
+
+  editPostDialog.append(editPostContent);
+  editPostModal.append(editPostDialog);
+
   const options = document.createElement("div");
   options.setAttribute("id", "options");
 
   if (username === author.name) {
-    options.innerHTML = `
-    <div class="dropdown">
-      <button class="btn btn-secondary" type="button" id="dropdownMenuButton" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="bi bi-three-dots-vertical"></i>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#" id="editPost" data-post-id="${id}>Edit</a></li>
-        <li><a class="dropdown-item" href="#" id="editPost" data-post-id="${id}">Edit</a></li>
-        <li><a class="dropdown-item" href="#" id="deletePost" data-post-id="${id}">Delete</a></li>
+    const dropdownEditDelete = document.createElement("div");
+    dropdownEditDelete.classList.add("dropdown");
 
-      </ul>
-   </div>`;
+    const dropdownButton = document.createElement("button");
+    dropdownButton.classList.add("btn", "btn-secondary");
+    dropdownButton.type = "button";
+    dropdownButton.id = "dropdownMenuButton";
+    dropdownButton.setAttribute("data-bs-toggle", "dropdown");
+    dropdownButton.setAttribute("aria-expanded", "false");
+
+    const dropdownIcon = document.createElement("i");
+    dropdownIcon.classList.add("bi", "bi-three-dots-vertical");
+
+    dropdownButton.appendChild(dropdownIcon);
+    dropdownEditDelete.appendChild(dropdownButton);
+
+    const dropdownMenu = document.createElement("ul");
+    dropdownMenu.classList.add("dropdown-menu");
+    dropdownMenu.setAttribute("aria-labelledby", "dropdownMenuButton1");
+
+    const editItem = document.createElement("li");
+    const editLink = document.createElement("a");
+    editLink.classList.add("dropdown-item");
+    editLink.id = "editPost";
+    editLink.setAttribute("data-post-id", id);
+    editLink.textContent = "Edit";
+    editItem.appendChild(editLink);
+
+    const deleteItem = document.createElement("li");
+    const deleteLink = document.createElement("a");
+    deleteLink.classList.add("dropdown-item");
+    deleteLink.href = "#";
+    deleteLink.id = "deletePost";
+    deleteLink.setAttribute("data-post-id", id);
+    deleteLink.textContent = "Delete";
+    deleteItem.appendChild(deleteLink);
+
+    editLink.addEventListener("click", () => {
+      editTitleInput.value = title;
+      editBodyInput.value = body;
+      editMediaInput.value = media;
+      // editTagsInput.value = tags;
+      editPostModal.classList.add("show");
+      editPostModal.style.display = "block";
+    });
+
+    // Add event listener for the "Delete" option
+    deleteLink.addEventListener("click", () => {
+      // Perform the delete action here
+      // You may want to display a confirmation dialog or send a request to delete the post
+      // Example: confirmDelete(id);
+    });
+
+    dropdownMenu.append(editItem, deleteItem);
+
+    dropdownEditDelete.appendChild(dropdownMenu);
+    options.appendChild(dropdownEditDelete);
   }
 
-  cardBottom.append(reactionsShow, commentsShow, options);
+  cardBottom.append(reactionsShow, commentsShow, editPostModal, options);
   card.append(cardTop, cardContent, cardBottom);
   return card;
 }
