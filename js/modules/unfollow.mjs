@@ -6,6 +6,8 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const author = params.get("author");
 
+let usersFollowers;
+
 async function renderUser() {
   const res = await fetch(
     url + author + "?_followers=true&_following=true&_posts=true",
@@ -18,20 +20,19 @@ async function renderUser() {
     }
   );
   const data = await res.json();
-  console.log(data);
-  unfollow(data)
+  usersFollowers = data.followers;
 }
-renderUser();
 
-export async function unfollow(data) {
+export async function unfollow() {
+  await renderUser();
   const res = await fetch(urlFUF + author + "/unfollow", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(usersFollowers),
   });
   const resData = await res.json();
-  console.log(resData);
 }
+unfollow();

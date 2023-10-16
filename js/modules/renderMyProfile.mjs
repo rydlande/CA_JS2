@@ -6,7 +6,7 @@ export default function renderProfile(data) {
   const { name, banner, avatar } = data;
   if (!avatar) {
     containerAvatar.innerHTML = `
-    <img class=" profile-image-element rounded-circle" src="../../media/ian-dooley-hpTH5b6mo2s-unsplash.jpg">`;
+    <img class=" profile-image-element rounded-circle" src="../../media/bruker2.png">`;
   } else {
     containerAvatar.innerHTML = `
     <img class=" profile-image-element rounded-circle" src="${avatar}">`;
