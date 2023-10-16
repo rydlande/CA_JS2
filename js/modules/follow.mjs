@@ -23,13 +23,9 @@ async function renderUserFUF() {
   );
   const data = await res.json();
   const usersFollowers = data.followers;
-  console.log(data);
   usersFollowers.forEach(({ name }) => {
-    console.log(name);
     followers = name;
   });
-  /*   await follow(usersFollowers);
-  await unfollow(usersFollowers); */
 
   buttonFUF.addEventListener("click", () => {
     console.log(usersFollowers);
@@ -42,7 +38,6 @@ async function renderUserFUF() {
       buttonFUF.classList.add("btn-custom-follow-following");
       buttonFUF.classList.remove("btn-custom-follow-not-following");
     }
-    // window.location.reload();
   });
 }
 renderUserFUF();
