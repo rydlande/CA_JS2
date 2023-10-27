@@ -22,14 +22,19 @@ async function renderUserFUF() {
     }
   );
   const data = await res.json();
+  let following;
   const usersFollowers = data.followers;
-  usersFollowers.forEach(({ name }) => {
-    followers = name;
-  });
-
+    usersFollowers.forEach(({ name }) => {
+      followers = name;
+      if (name === localStorage.getItem("name")) {
+        console.log("following")
+        following = true
+      }
+    });
+  console.log(usersFollowers)
   buttonFUF.addEventListener("click", () => {
     console.log(usersFollowers);
-    if (author === followers) {
+    if (following === true) {
       unfollow();
       buttonFUF.classList.remove("btn-custom-follow-following");
       buttonFUF.classList.add("btn-custom-follow-not-following");
@@ -39,29 +44,29 @@ async function renderUserFUF() {
       buttonFUF.classList.remove("btn-custom-follow-not-following");
     }
   });
+
 }
 renderUserFUF();
 
-async function follow(usersFollowers) {
+
+async function follow() {
   const res = await fetch(urlFUF + author + "/follow", {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(usersFollowers),
   });
   const resData = await res.json();
+  window.location.reload();
 }
 
-async function unfollow(usersFollowers) {
+async function unfollow() {
   const res = await fetch(urlFUF + author + "/unfollow", {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(usersFollowers),
   });
   const resultData = await res.json();
+  window.location.reload();
 }

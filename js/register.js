@@ -52,5 +52,6 @@ async function registerUser() {
             setTimeout(() => {
                 window.location.href = './public/feed/'
             }, 3000);
-        }    }
+        }    
+    }
 
